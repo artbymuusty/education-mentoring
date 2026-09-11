@@ -64,10 +64,7 @@ export function MentorApplicationForm() {
 
   return (
     <form onSubmit={handleSubmit} className="rounded-[3px] border border-line bg-paper-raised p-6 sm:p-8">
-      <h2 className="font-display text-xl font-semibold">{t.formTitle}</h2>
-      <p className="mt-2 text-sm text-muted">{t.formDescription}</p>
-
-      <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <TextField id="firstName" label={t.fields.firstName} value={values.firstName} onChange={(v) => update("firstName", v)} />
         <TextField id="lastName" label={t.fields.lastName} value={values.lastName} onChange={(v) => update("lastName", v)} />
         <TextField id="phone" label={t.fields.phone} type="tel" value={values.phone} onChange={(v) => update("phone", v)} />

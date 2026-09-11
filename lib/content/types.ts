@@ -139,6 +139,12 @@ export interface Dictionary {
       description: string;
       cta: string;
     };
+    visualStory: {
+      eyebrow: string;
+      title: string;
+      description: string;
+      captions: [string, string, string];
+    };
     trust: {
       title: string;
       body: string[];
@@ -203,8 +209,10 @@ export interface Dictionary {
     formCta: { title: string; description: string; cta: string };
   };
   bizeKatilin: {
+    eyebrow: string;
     title: string;
     intro: string;
+    imageCaption: string;
     sections: { heading: string; body: string }[];
     formTitle: string;
     formDescription: string;

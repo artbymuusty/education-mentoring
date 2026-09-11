@@ -123,6 +123,13 @@ export const tr: Dictionary = {
         "Mentorlarımız bu süreci sadece anlatmıyor, akademik, bürokratik ve günlük hayatla ilgili tarafını da biliyor. Görevleri başvuru yapmak değil, doğru kararı vermeni kolaylaştırmak.",
       cta: "Mentorluğu Keşfet",
     },
+    visualStory: {
+      eyebrow: "Günlük Hayat",
+      title: "Almanya'da hayat, başvurudan ibaret değil.",
+      description:
+        "Ders programının dışında kalan kısım da önemli: yeni bir şehre alışmak, ilk haftanın belirsizliği, zamanla oturan bir rutin. Bu bölüm, gerçek öğrenci fotoğrafları geldikçe büyüyecek.",
+      captions: ["İlk ders, ilk hafta", "Kütüphanede bir öğleden sonra", "Bir mentorluk görüşmesi"],
+    },
     trust: {
       title: "Bir insanla konuşabilirsin.",
       body: [
@@ -422,8 +429,10 @@ export const tr: Dictionary = {
     },
   },
   bizeKatilin: {
-    title: "Bize Katılın",
+    eyebrow: "Bize Katılın",
+    title: "Bir zamanlar sen de nereden başlayacağını bilmiyordun.",
     intro: "Almanya'da eğitim deneyimin varsa ve bu yolda birine yol arkadaşı olmak istiyorsan, seni dinlemek isteriz.",
+    imageCaption: "Deneyimini paylaş",
     sections: [
       {
         heading: "Neden mentor olabilirsin?",
