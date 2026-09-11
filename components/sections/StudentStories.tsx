@@ -3,7 +3,8 @@ import { demoStudentStories } from "@/lib/content/stories.demo";
 import { demoContentEnabled } from "@/lib/content/demo";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { StudentStoryCard } from "@/components/stories/StudentStoryCard";
+import { FeaturedStudentStory } from "@/components/stories/FeaturedStudentStory";
+import { StudentStoryCarousel } from "@/components/stories/StudentStoryCarousel";
 
 export function StudentStories() {
   const isDemo = studentStories.length === 0 && demoContentEnabled;
@@ -11,15 +12,23 @@ export function StudentStories() {
 
   if (stories.length === 0) return null;
 
+  const featured = stories.find((story) => story.isFeatured) ?? stories[0];
+  const rest = stories.filter((story) => story.id !== featured.id);
+
   return (
     <section id="ogrenci-hikayeleri" className="border-b border-line py-16 sm:py-20 scroll-mt-20">
       <Container>
         <SectionHeading title="Bu yolculukta yalnız değildiler." subtitle="Bu yolculuktan gerçekten geçmiş olanlar." />
-        <div className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-2">
-          {stories.map((story) => (
-            <StudentStoryCard key={story.id} story={story} isDemo={isDemo} />
-          ))}
+
+        <div className="mt-12">
+          <FeaturedStudentStory story={featured} isDemo={isDemo} />
         </div>
+
+        {rest.length > 0 ? (
+          <div className="mt-16 border-t border-line pt-12">
+            <StudentStoryCarousel stories={rest} isDemo={isDemo} />
+          </div>
+        ) : null}
       </Container>
     </section>
   );

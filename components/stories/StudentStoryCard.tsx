@@ -1,42 +1,43 @@
 import type { StudentStory } from "@/lib/content/types";
-import { Avatar } from "@/components/ui/Avatar";
+import { EditorialPhoto } from "@/components/ui/EditorialPhoto";
 
-const fields: { key: keyof StudentStory; label: string }[] = [
-  { key: "startingPoint", label: "Nereden başladı?" },
-  { key: "problem", label: "Karşılaştığı problem" },
-  { key: "stepsTaken", label: "Birlikte hangi adımlardan geçildi?" },
-  { key: "now", label: "Şimdi nerede?" },
-];
-
-export function StudentStoryCard({ story, isDemo = false }: { story: StudentStory; isDemo?: boolean }) {
+/**
+ * Compact carousel-item variant — the rich four-field narrative lives on
+ * FeaturedStudentStory instead, so this card stays scannable at a glance.
+ */
+export function StudentStoryCard({
+  story,
+  isDemo = false,
+  priority = false,
+}: {
+  story: StudentStory;
+  isDemo?: boolean;
+  priority?: boolean;
+}) {
   return (
-    <article className="relative rounded-[3px] border border-line bg-paper-raised p-6 sm:p-8">
-      {isDemo ? (
-        <span className="absolute right-4 top-4 rounded-full border border-gold px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.08em] text-gold">
-          Örnek
+    <article>
+      <div className="relative">
+        <EditorialPhoto
+          src={story.photoSrc}
+          alt={`${story.name}, ${story.university}`}
+          ratio="3 / 4"
+          priority={priority}
+          sizes="300px"
+        />
+        {isDemo ? (
+          <span className="absolute right-3 top-3 rounded-full border border-gold bg-paper/90 px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.08em] text-gold">
+            Örnek
+          </span>
+        ) : null}
+        <span className="absolute bottom-3 left-3 rounded-full border border-line bg-paper/90 px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.08em] text-ink">
+          {story.city} · {story.year}
         </span>
-      ) : null}
-
-      <div className="flex items-center gap-4">
-        <Avatar name={story.name} src={story.photoSrc} size={56} />
-        <div>
-          <h3 className="font-display text-xl font-semibold">{story.name}</h3>
-          <p className="text-sm text-muted">
-            {story.city} · {story.university} · {story.field}
-          </p>
-        </div>
       </div>
 
-      <p className="mt-5 font-display text-lg italic text-ink">&ldquo;{story.quote}&rdquo;</p>
-
-      <dl className="mt-6 flex flex-col gap-5 border-t border-line pt-6">
-        {fields.map(({ key, label }) => (
-          <div key={key}>
-            <dt className="font-mono text-xs uppercase tracking-[0.08em] text-muted">{label}</dt>
-            <dd className="mt-1 text-ink">{story[key]}</dd>
-          </div>
-        ))}
-      </dl>
+      <p className="mt-4 line-clamp-3 font-display text-base italic leading-snug text-ink">&ldquo;{story.quote}&rdquo;</p>
+      <p className="mt-2 text-sm text-muted">
+        {story.name} · {story.university}
+      </p>
     </article>
   );
 }

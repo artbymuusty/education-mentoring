@@ -13,16 +13,20 @@ export function EditorialPhoto({
   alt,
   className,
   ratio = "4 / 5",
+  sizes = "(min-width: 1024px) 50vw, 100vw",
+  priority = false,
 }: {
   src?: string;
   alt: string;
   className?: string;
   ratio?: string;
+  sizes?: string;
+  priority?: boolean;
 }) {
   if (src) {
     return (
       <div className={cn("relative overflow-hidden rounded-[3px] border border-line", className)} style={{ aspectRatio: ratio }}>
-        <Image src={src} alt={alt} fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover" />
+        <Image src={src} alt={alt} fill sizes={sizes} priority={priority} className="object-cover" />
       </div>
     );
   }

@@ -55,6 +55,8 @@ export interface StudentStory {
   problem: string;
   stepsTaken: string;
   now: string;
+  /** Marks the story shown in the large editorial slot; first item wins if none is marked. */
+  isFeatured?: boolean;
 }
 
 export interface FaqItem {
