@@ -19,6 +19,39 @@ export interface ServiceItem {
   nextStep: string;
 }
 
+/**
+ * A real mentor's public profile (madde: PRIORITY 2 — Human Trust).
+ * `photoSrc` is optional — when absent, MentorProfile renders a lettered
+ * avatar in brand colors instead of a stock/fake photo. Never seed this
+ * array with an invented person; leave it empty until real data arrives.
+ */
+export interface Mentor {
+  id: string;
+  name: string;
+  role: string;
+  photoSrc?: string;
+  bio: string;
+  germanyExperience: string;
+  education: string;
+  specialty: string;
+  quote?: string;
+}
+
+/**
+ * A real student's journey (madde: PRIORITY 3 — Student Story). Never seed
+ * this array with an invented student; leave it empty until real data,
+ * shared with the student's consent, arrives.
+ */
+export interface StudentStory {
+  id: string;
+  name: string;
+  photoSrc?: string;
+  startingPoint: string;
+  problem: string;
+  stepsTaken: string;
+  now: string;
+}
+
 export interface FaqItem {
   question: string;
   answer: string;
@@ -89,6 +122,9 @@ export interface Dictionary {
     trust: {
       title: string;
       body: string[];
+      /** Optional real photo — omitted, not stock art, until one exists. */
+      imageSrc?: string;
+      imageAlt?: string;
     };
     faqPreview: {
       title: string;
@@ -118,6 +154,9 @@ export interface Dictionary {
     title: string;
     intro: string;
     sections: { heading: string; body: string }[];
+    /** Optional real photo (team/office) — omitted, not stock art, until one exists. */
+    imageSrc?: string;
+    imageAlt?: string;
   };
   faq: {
     title: string;

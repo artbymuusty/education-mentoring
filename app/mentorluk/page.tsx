@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import { getDictionary } from "@/lib/content";
+import { mentors } from "@/lib/content/mentors";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
+import { MentorProfile } from "@/components/mentorship/MentorProfile";
 
 export function generateMetadata(): Metadata {
   const t = getDictionary().mentorship;
-  return { title: t.title, description: t.intro };
+  return { title: t.title, description: t.intro, alternates: { canonical: "/mentorluk" } };
 }
 
 export default function MentorshipPage() {
@@ -28,6 +30,17 @@ export default function MentorshipPage() {
           ))}
         </div>
       </Container>
+
+      {mentors.length > 0 ? (
+        <Container className="mt-16">
+          <h2 className="font-display text-2xl font-semibold sm:text-3xl">Mentorlarımız</h2>
+          <div className="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-2">
+            {mentors.map((mentor) => (
+              <MentorProfile key={mentor.id} mentor={mentor} />
+            ))}
+          </div>
+        </Container>
+      ) : null}
 
       <Container className="mt-16">
         <h2 className="font-display text-2xl font-semibold sm:text-3xl">{t.processTitle}</h2>
