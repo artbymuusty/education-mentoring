@@ -5,6 +5,7 @@ import { AssessmentFlow } from "@/components/assessment/AssessmentFlow";
 export const metadata: Metadata = {
   title: "Seni Biraz Tanıyalım",
   description: "Birkaç kısa soruyla mevcut durumunu anlayalım, sana uygun bir görüşme hazırlayalım.",
+  alternates: { canonical: "/basvuru" },
 };
 
 export default async function AssessmentPage({ searchParams }: PageProps<"/basvuru">) {

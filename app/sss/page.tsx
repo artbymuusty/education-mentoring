@@ -4,7 +4,7 @@ import { Container } from "@/components/ui/Container";
 
 export function generateMetadata(): Metadata {
   const t = getDictionary().faq;
-  return { title: t.title, description: t.intro };
+  return { title: t.title, description: t.intro, alternates: { canonical: "/sss" } };
 }
 
 export default function FaqPage() {

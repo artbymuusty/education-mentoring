@@ -5,7 +5,7 @@ import { Container } from "@/components/ui/Container";
 
 export function generateMetadata(): Metadata {
   const t = getDictionary().services;
-  return { title: t.title, description: t.intro };
+  return { title: t.title, description: t.intro, alternates: { canonical: "/nasil-yardimci-oluyoruz" } };
 }
 
 export default function ServicesPage() {
