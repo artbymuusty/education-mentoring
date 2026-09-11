@@ -1,9 +1,14 @@
 import type { Mentor } from "@/lib/content/types";
 import { Avatar } from "@/components/ui/Avatar";
 
-export function MentorProfile({ mentor }: { mentor: Mentor }) {
+export function MentorProfile({ mentor, isDemo = false }: { mentor: Mentor; isDemo?: boolean }) {
   return (
-    <article className="rounded-[3px] border border-line bg-paper-raised p-6 sm:p-8">
+    <article className="relative rounded-[3px] border border-line bg-paper-raised p-6 sm:p-8">
+      {isDemo ? (
+        <span className="absolute right-4 top-4 rounded-full border border-gold px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.08em] text-gold">
+          Örnek
+        </span>
+      ) : null}
       <div className="flex items-center gap-4">
         <Avatar name={mentor.name} src={mentor.photoSrc} size={72} />
         <div>

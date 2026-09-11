@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { getDictionary } from "@/lib/content";
 import { mentors } from "@/lib/content/mentors";
+import { demoMentors } from "@/lib/content/mentors.demo";
+import { demoContentEnabled } from "@/lib/content/demo";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { MentorProfile } from "@/components/mentorship/MentorProfile";
@@ -12,6 +14,8 @@ export function generateMetadata(): Metadata {
 
 export default function MentorshipPage() {
   const t = getDictionary().mentorship;
+  const isDemo = mentors.length === 0 && demoContentEnabled;
+  const visibleMentors = isDemo ? demoMentors : mentors;
 
   return (
     <div className="py-16 sm:py-20">
@@ -31,12 +35,12 @@ export default function MentorshipPage() {
         </div>
       </Container>
 
-      {mentors.length > 0 ? (
+      {visibleMentors.length > 0 ? (
         <Container className="mt-16">
           <h2 className="font-display text-2xl font-semibold sm:text-3xl">Mentorlarımız</h2>
           <div className="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-2">
-            {mentors.map((mentor) => (
-              <MentorProfile key={mentor.id} mentor={mentor} />
+            {visibleMentors.map((mentor) => (
+              <MentorProfile key={mentor.id} mentor={mentor} isDemo={isDemo} />
             ))}
           </div>
         </Container>

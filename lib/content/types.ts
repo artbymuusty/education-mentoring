@@ -46,6 +46,11 @@ export interface StudentStory {
   id: string;
   name: string;
   photoSrc?: string;
+  city: string;
+  university: string;
+  field: string;
+  year: string;
+  quote: string;
   startingPoint: string;
   problem: string;
   stepsTaken: string;

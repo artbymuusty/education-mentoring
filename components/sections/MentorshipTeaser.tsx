@@ -1,12 +1,15 @@
 import { getDictionary } from "@/lib/content";
 import { mentors } from "@/lib/content/mentors";
+import { demoMentors } from "@/lib/content/mentors.demo";
+import { demoContentEnabled } from "@/lib/content/demo";
 import { Avatar } from "@/components/ui/Avatar";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 
 export function MentorshipTeaser() {
   const t = getDictionary().home.mentorship;
-  const featured = mentors[0];
+  const isDemo = mentors.length === 0 && demoContentEnabled;
+  const featured = (isDemo ? demoMentors : mentors)[0];
 
   return (
     <section className="border-b border-line py-16 sm:py-20">
@@ -22,7 +25,12 @@ export function MentorshipTeaser() {
         </div>
 
         {featured?.quote ? (
-          <div className="rounded-[3px] border border-line bg-paper-raised p-8">
+          <div className="relative rounded-[3px] border border-line bg-paper-raised p-8">
+            {isDemo ? (
+              <span className="absolute right-4 top-4 rounded-full border border-gold px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.08em] text-gold">
+                Örnek
+              </span>
+            ) : null}
             <p className="font-display text-xl italic text-ink">&ldquo;{featured.quote}&rdquo;</p>
             <div className="mt-5 flex items-center gap-3">
               <Avatar name={featured.name} src={featured.photoSrc} size={40} />
