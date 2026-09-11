@@ -1,26 +1,34 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Container } from "@/components/ui/Container";
-import { siteConfig } from "@/lib/site-config";
+import { hasEmail, siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
   title: "KVKK Aydınlatma Metni",
   description: `${siteConfig.name} KVKK aydınlatma metni.`,
+  alternates: { canonical: "/kvkk" },
 };
 
 export default function KvkkPage() {
+  const { companyName, companyAddress, mersisNo, taxOffice, taxNumber } = siteConfig.legal;
+  const controllerName = companyName || siteConfig.name;
+
   return (
     <div className="py-16 sm:py-20">
       <Container className="max-w-2xl">
         <h1 className="font-display text-4xl font-semibold">KVKK Aydınlatma Metni</h1>
+        <p className="mt-3 font-mono text-xs uppercase tracking-[0.08em] text-muted">
+          6698 sayılı Kişisel Verilerin Korunması Kanunu kapsamında
+        </p>
         <div className="mt-8 flex flex-col gap-5 text-ink">
-          <p className="text-sm text-muted">
-            Bu sayfa, 6698 sayılı Kişisel Verilerin Korunması Kanunu kapsamında hazırlanmış bir taslaktır;
-            veri sorumlusuna ilişkin tescil bilgileri netleştikten ve bir hukuk danışmanı tarafından
-            onaylandıktan sonra yayına alınmalıdır.
-          </p>
           <div>
             <h2 className="font-display text-lg font-semibold">Veri sorumlusu</h2>
-            <p className="mt-2 text-muted">{siteConfig.name} (şirket unvanı ve adresi eklenecek).</p>
+            <p className="mt-2 text-muted">
+              {controllerName}
+              {companyAddress ? `, ${companyAddress}` : ""}
+              {mersisNo ? ` — MERSİS: ${mersisNo}` : ""}
+              {taxOffice && taxNumber ? ` — ${taxOffice} V.D. ${taxNumber}` : ""}.
+            </p>
           </div>
           <div>
             <h2 className="font-display text-lg font-semibold">İşlenen kişisel veriler</h2>
@@ -39,8 +47,17 @@ export default function KvkkPage() {
           <div>
             <h2 className="font-display text-lg font-semibold">Haklarınız</h2>
             <p className="mt-2 text-muted">
-              KVKK madde 11 kapsamındaki haklarını kullanmak için {siteConfig.contact.email} adresine
-              yazabilirsin.
+              KVKK madde 11 kapsamındaki haklarını kullanmak için{" "}
+              {hasEmail ? (
+                <>{siteConfig.contact.email} adresine yazabilirsin.</>
+              ) : (
+                <>
+                  <Link href="/iletisim" className="text-accent hover:underline">
+                    iletişim sayfasındaki
+                  </Link>{" "}
+                  kanallardan bize ulaşabilirsin.
+                </>
+              )}
             </p>
           </div>
         </div>

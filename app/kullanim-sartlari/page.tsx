@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Container } from "@/components/ui/Container";
-import { siteConfig } from "@/lib/site-config";
+import { hasEmail, siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
   title: "Kullanım Şartları",
   description: `${siteConfig.name} kullanım şartları.`,
+  alternates: { canonical: "/kullanim-sartlari" },
 };
 
 export default function TermsPage() {
@@ -13,9 +15,6 @@ export default function TermsPage() {
       <Container className="max-w-2xl">
         <h1 className="font-display text-4xl font-semibold">Kullanım Şartları</h1>
         <div className="mt-8 flex flex-col gap-5 text-ink">
-          <p className="text-sm text-muted">
-            Bu sayfa bir taslaktır ve yayına almadan önce bir hukuk danışmanı tarafından gözden geçirilmelidir.
-          </p>
           <div>
             <h2 className="font-display text-lg font-semibold">Hizmetin kapsamı</h2>
             <p className="mt-2 text-muted">
@@ -34,7 +33,17 @@ export default function TermsPage() {
           <div>
             <h2 className="font-display text-lg font-semibold">İletişim</h2>
             <p className="mt-2 text-muted">
-              Sorularınız için {siteConfig.contact.email} adresinden bize ulaşabilirsiniz.
+              {hasEmail ? (
+                <>Sorularınız için {siteConfig.contact.email} adresinden bize ulaşabilirsiniz.</>
+              ) : (
+                <>
+                  Sorularınız için{" "}
+                  <Link href="/iletisim" className="text-accent hover:underline">
+                    iletişim sayfasındaki
+                  </Link>{" "}
+                  kanallardan bize ulaşabilirsiniz.
+                </>
+              )}
             </p>
           </div>
         </div>

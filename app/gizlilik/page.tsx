@@ -1,22 +1,32 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Container } from "@/components/ui/Container";
-import { siteConfig } from "@/lib/site-config";
+import { hasEmail, siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
   title: "Gizlilik Politikası",
   description: `${siteConfig.name} gizlilik politikası.`,
+  alternates: { canonical: "/gizlilik" },
 };
 
 export default function PrivacyPage() {
+  const controllerName = siteConfig.legal.companyName || siteConfig.name;
+
   return (
     <div className="py-16 sm:py-20">
       <Container className="max-w-2xl">
         <h1 className="font-display text-4xl font-semibold">Gizlilik Politikası</h1>
+        <p className="mt-3 font-mono text-xs uppercase tracking-[0.08em] text-muted">
+          Son güncelleme: {new Date().toLocaleDateString("tr-TR", { year: "numeric", month: "long" })}
+        </p>
         <div className="prose mt-8 flex flex-col gap-5 text-ink">
-          <p className="text-sm text-muted">
-            Bu sayfa, {siteConfig.name} tarafından hazırlanan bir taslaktır ve yayına almadan önce bir hukuk
-            danışmanı tarafından gözden geçirilmelidir.
-          </p>
+          <div>
+            <h2 className="font-display text-lg font-semibold">Veri sorumlusu</h2>
+            <p className="mt-2 text-muted">
+              {controllerName}
+              {siteConfig.legal.companyAddress ? `, ${siteConfig.legal.companyAddress}` : ""}.
+            </p>
+          </div>
           <div>
             <h2 className="font-display text-lg font-semibold">Hangi bilgileri topluyoruz?</h2>
             <p className="mt-2 text-muted">
@@ -36,7 +46,18 @@ export default function PrivacyPage() {
             <h2 className="font-display text-lg font-semibold">Verilerin saklanması</h2>
             <p className="mt-2 text-muted">
               Bilgilerin, erişimi yalnızca yetkili ekip üyeleriyle sınırlı olan güvenli bir veritabanında
-              saklanır. Bilgilerinin silinmesini istediğinde {siteConfig.contact.email} adresine yazabilirsin.
+              saklanır.{" "}
+              {hasEmail ? (
+                <>Bilgilerinin silinmesini istediğinde {siteConfig.contact.email} adresine yazabilirsin.</>
+              ) : (
+                <>
+                  Bilgilerinin silinmesini istediğinde{" "}
+                  <Link href="/iletisim" className="text-accent hover:underline">
+                    iletişim sayfasındaki
+                  </Link>{" "}
+                  kanallardan bize ulaşabilirsin.
+                </>
+              )}
             </p>
           </div>
         </div>
