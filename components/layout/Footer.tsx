@@ -1,12 +1,13 @@
 import Link from "next/link";
 import { getDictionary } from "@/lib/content";
 import { siteConfig } from "@/lib/site-config";
-import { getSiteSettings, whatsappLinkFor } from "@/lib/site-settings";
+import { getSiteSettings, getSocialLinks, whatsappLinkFor } from "@/lib/site-settings";
 import { Container } from "@/components/ui/Container";
+import { SocialIcon } from "@/components/ui/SocialIcon";
 
 export async function Footer() {
   const t = getDictionary();
-  const settings = await getSiteSettings();
+  const [settings, social] = await Promise.all([getSiteSettings(), getSocialLinks()]);
   const whatsapp = whatsappLinkFor(settings);
 
   const navLinks = [
@@ -15,7 +16,14 @@ export async function Footer() {
     { href: "/hakkimizda", label: t.nav.about },
     { href: "/sss", label: t.nav.faq },
     { href: "/iletisim", label: t.nav.contact },
+    { href: "/bize-katilin", label: "Bize Katılın" },
   ];
+
+  const socialLinks = [
+    social.linkedinUrl ? { platform: "linkedin" as const, href: social.linkedinUrl, label: "LinkedIn" } : null,
+    social.instagramUrl ? { platform: "instagram" as const, href: social.instagramUrl, label: "Instagram" } : null,
+    social.xUrl ? { platform: "x" as const, href: social.xUrl, label: "X" } : null,
+  ].filter((s): s is NonNullable<typeof s> => s !== null);
 
   return (
     <footer className="border-t border-line bg-paper-raised">
@@ -32,11 +40,6 @@ export async function Footer() {
             {settings.contactEmail ? (
               <a href={`mailto:${settings.contactEmail}`} className="text-accent hover:underline">
                 {settings.contactEmail}
-              </a>
-            ) : null}
-            {siteConfig.contact.instagram ? (
-              <a href={siteConfig.contact.instagram} className="text-accent hover:underline">
-                Instagram
               </a>
             ) : null}
           </div>
@@ -69,8 +72,24 @@ export async function Footer() {
         </div>
       </Container>
       <div className="border-t border-line py-5">
-        <Container>
+        <Container className="flex flex-wrap items-center justify-between gap-4">
           <p className="font-mono text-xs text-muted">{t.footer.rights}</p>
+          {socialLinks.length > 0 ? (
+            <div className="flex items-center gap-4">
+              {socialLinks.map((s) => (
+                <a
+                  key={s.platform}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={s.label}
+                  className="text-muted transition-colors hover:text-accent"
+                >
+                  <SocialIcon platform={s.platform} className="h-4 w-4" />
+                </a>
+              ))}
+            </div>
+          ) : null}
         </Container>
       </div>
     </footer>

@@ -5,7 +5,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { getDictionary } from "@/lib/content";
 import { siteConfig } from "@/lib/site-config";
-import { getSiteSettings, resolveSiteUrl } from "@/lib/site-settings";
+import { getSiteSettings, getSocialLinks, resolveSiteUrl } from "@/lib/site-settings";
 import { getOrganizationJsonLd } from "@/lib/structured-data";
 
 const fraunces = Fraunces({
@@ -62,7 +62,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function RootLayout({ children }: LayoutProps<"/">) {
-  const settings = await getSiteSettings();
+  const [settings, social] = await Promise.all([getSiteSettings(), getSocialLinks()]);
   const resolvedUrl = resolveSiteUrl(settings);
 
   return (
@@ -73,7 +73,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
       <body className="flex min-h-full flex-col font-body">
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(getOrganizationJsonLd(settings, resolvedUrl)) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(getOrganizationJsonLd(settings, social, resolvedUrl)) }}
         />
         <a
           href="#main-content"

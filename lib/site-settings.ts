@@ -95,3 +95,44 @@ export function resolveSiteUrl(settings: Pick<SiteSettings, "productionDomain">)
   if (!domain) return siteConfig.url;
   return domain.startsWith("http://") || domain.startsWith("https://") ? domain : `https://${domain}`;
 }
+
+/**
+ * Social links (LinkedIn/Instagram/X), backed by the social_links
+ * singleton (0004_social_links.sql) and editable from /admin/settings.
+ * Same empty-string-means-unset convention as SiteSettings — a missing
+ * URL must never become a broken/fake link in the footer.
+ */
+export interface SocialLinks {
+  linkedinUrl: string;
+  instagramUrl: string;
+  xUrl: string;
+}
+
+const EMPTY_SOCIAL_LINKS: SocialLinks = {
+  linkedinUrl: "",
+  instagramUrl: "",
+  xUrl: "",
+};
+
+export const SOCIAL_LINKS_TAG = "social-links";
+
+async function fetchSocialLinks(): Promise<SocialLinks> {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  if (!url || !anonKey) return EMPTY_SOCIAL_LINKS;
+
+  const supabase = createClient<Database>(url, anonKey);
+  const { data } = await supabase.from("social_links").select("*").eq("singleton", true).maybeSingle();
+
+  if (!data) return EMPTY_SOCIAL_LINKS;
+
+  return {
+    linkedinUrl: data.linkedin_url ?? "",
+    instagramUrl: data.instagram_url ?? "",
+    xUrl: data.x_url ?? "",
+  };
+}
+
+export const getSocialLinks = unstable_cache(fetchSocialLinks, ["social-links-v1"], {
+  tags: [SOCIAL_LINKS_TAG],
+});

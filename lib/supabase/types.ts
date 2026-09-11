@@ -1,6 +1,6 @@
 /**
- * Hand-written to match supabase/migrations/0001_init.sql and
- * 0002_site_settings.sql. Once a real Supabase project is connected,
+ * Hand-written to match supabase/migrations/0001_init.sql through
+ * 0004_social_links.sql. Once a real Supabase project is connected,
  * regenerate with:
  *   npx supabase gen types typescript --project-id <ref> > lib/supabase/types.ts
  * (or the `generate_typescript_types` Supabase MCP tool) and keep this
@@ -9,6 +9,7 @@
 
 export type LeadStatus = "new" | "contacted" | "meeting" | "in_progress" | "converted" | "closed";
 export type ProfileRole = "admin" | "mentor" | "student" | "visitor";
+export type MentorApplicationStatus = "new" | "reviewing" | "contacted" | "accepted" | "declined";
 
 export interface Database {
   public: {
@@ -103,6 +104,60 @@ export interface Database {
           updated_at?: string;
         };
         Update: Partial<Database["public"]["Tables"]["site_settings"]["Insert"]>;
+        Relationships: [];
+      };
+      mentor_applications: {
+        Row: {
+          id: string;
+          created_at: string;
+          updated_at: string;
+          first_name: string;
+          last_name: string;
+          phone: string;
+          email: string;
+          germany_experience: string;
+          motivation: string;
+          message: string | null;
+          status: MentorApplicationStatus;
+          admin_notes: string | null;
+        };
+        Insert: {
+          id?: string;
+          created_at?: string;
+          updated_at?: string;
+          first_name: string;
+          last_name: string;
+          phone: string;
+          email: string;
+          germany_experience: string;
+          motivation: string;
+          message?: string | null;
+          status?: MentorApplicationStatus;
+          admin_notes?: string | null;
+        };
+        Update: Partial<Database["public"]["Tables"]["mentor_applications"]["Insert"]>;
+        Relationships: [];
+      };
+      social_links: {
+        Row: {
+          id: string;
+          singleton: boolean;
+          linkedin_url: string | null;
+          instagram_url: string | null;
+          x_url: string | null;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          singleton?: boolean;
+          linkedin_url?: string | null;
+          instagram_url?: string | null;
+          x_url?: string | null;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: Partial<Database["public"]["Tables"]["social_links"]["Insert"]>;
         Relationships: [];
       };
     };

@@ -20,11 +20,10 @@ export default async function AdminSettingsPage({ searchParams }: PageProps<"/ad
   const saved = params.saved === "1";
   const errorKey = typeof params.error === "string" ? params.error : null;
 
-  const { data: settings, error: loadError } = await supabase
-    .from("site_settings")
-    .select("*")
-    .eq("singleton", true)
-    .maybeSingle();
+  const [{ data: settings, error: loadError }, { data: social, error: socialLoadError }] = await Promise.all([
+    supabase.from("site_settings").select("*").eq("singleton", true).maybeSingle(),
+    supabase.from("social_links").select("*").eq("singleton", true).maybeSingle(),
+  ]);
 
   return (
     <div className="py-12">
@@ -50,9 +49,9 @@ export default async function AdminSettingsPage({ searchParams }: PageProps<"/ad
             {errorMessages[errorKey] ?? errorMessages["1"]}
           </p>
         ) : null}
-        {loadError ? (
+        {loadError || socialLoadError ? (
           <p role="alert" className="mt-6 text-sm text-danger">
-            Ayarlar yüklenemedi: {loadError.message}
+            Ayarlar yüklenemedi: {(loadError ?? socialLoadError)?.message}
           </p>
         ) : null}
 
@@ -98,6 +97,23 @@ export default async function AdminSettingsPage({ searchParams }: PageProps<"/ad
               placeholder="egitimmentoring.com"
               helper="https:// olmadan yaz, otomatik eklenir. Boşken deployment fallback'i kullanılır."
             />
+          </fieldset>
+
+          <fieldset className="flex flex-col gap-4 border-t border-line pt-6">
+            <legend className="font-mono text-xs uppercase tracking-[0.08em] text-muted">Sosyal Medya</legend>
+            <SettingsField
+              id="linkedin_url"
+              label="LinkedIn"
+              defaultValue={social?.linkedin_url}
+              placeholder="linkedin.com/company/..."
+            />
+            <SettingsField
+              id="instagram_url"
+              label="Instagram"
+              defaultValue={social?.instagram_url}
+              placeholder="instagram.com/..."
+            />
+            <SettingsField id="x_url" label="X" defaultValue={social?.x_url} placeholder="x.com/..." />
           </fieldset>
 
           <div>
