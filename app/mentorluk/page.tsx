@@ -38,9 +38,11 @@ export default function MentorshipPage() {
       {visibleMentors.length > 0 ? (
         <Container className="mt-16">
           <h2 className="font-display text-2xl font-semibold sm:text-3xl">Mentorlarımız</h2>
-          <div className="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-2">
+          <div className="mt-10 flex flex-col gap-14">
             {visibleMentors.map((mentor) => (
-              <MentorProfile key={mentor.id} mentor={mentor} isDemo={isDemo} />
+              <div key={mentor.id} className="border-t border-line pt-10 first:border-t-0 first:pt-0">
+                <MentorProfile mentor={mentor} isDemo={isDemo} />
+              </div>
             ))}
           </div>
         </Container>

@@ -2,9 +2,9 @@ import { getDictionary } from "@/lib/content";
 import { mentors } from "@/lib/content/mentors";
 import { demoMentors } from "@/lib/content/mentors.demo";
 import { demoContentEnabled } from "@/lib/content/demo";
-import { Avatar } from "@/components/ui/Avatar";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
+import { EditorialPhoto } from "@/components/ui/EditorialPhoto";
 
 export function MentorshipTeaser() {
   const t = getDictionary().home.mentorship;
@@ -13,7 +13,7 @@ export function MentorshipTeaser() {
 
   return (
     <section className="border-b border-line py-16 sm:py-20">
-      <Container className="grid gap-8 lg:grid-cols-[1.2fr_1fr] lg:items-center">
+      <Container className="grid gap-10 lg:grid-cols-[1fr_0.8fr] lg:items-center">
         <div>
           <h2 className="text-balance font-display text-3xl font-semibold sm:text-4xl">{t.title}</h2>
           <p className="mt-4 max-w-lg text-muted">{t.description}</p>
@@ -24,21 +24,24 @@ export function MentorshipTeaser() {
           </div>
         </div>
 
-        {featured?.quote ? (
-          <div className="relative rounded-[3px] border border-line bg-paper-raised p-8">
+        {featured ? (
+          <div className="relative">
+            <EditorialPhoto
+              src={featured.photoSrc}
+              alt={`${featured.name}, ${featured.role}`}
+              ratio="4 / 5"
+              sizes="(min-width: 1024px) 35vw, 100vw"
+            />
             {isDemo ? (
-              <span className="absolute right-4 top-4 rounded-full border border-gold px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.08em] text-gold">
+              <span className="absolute right-3 top-3 rounded-full border border-gold bg-paper/90 px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.08em] text-gold">
                 Örnek
               </span>
             ) : null}
-            <p className="font-display text-xl italic text-ink">&ldquo;{featured.quote}&rdquo;</p>
-            <div className="mt-5 flex items-center gap-3">
-              <Avatar name={featured.name} src={featured.photoSrc} size={40} />
-              <div>
-                <p className="text-sm font-medium text-ink">{featured.name}</p>
-                <p className="text-xs text-muted">{featured.role}</p>
-              </div>
-            </div>
+            {featured.quote ? (
+              <span className="absolute bottom-3 left-3 right-3 rounded-[3px] border border-line bg-paper/95 px-4 py-3 font-display text-sm italic leading-snug text-ink">
+                &ldquo;{featured.quote}&rdquo;
+              </span>
+            ) : null}
           </div>
         ) : (
           <div className="rounded-[3px] border border-line bg-paper-raised p-8">
