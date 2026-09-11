@@ -2,6 +2,11 @@
 
 Almanya eğitim & mentorluk platformu — Faz 1 (Next.js + Supabase).
 
+> Bu, projenin teknik/repo adı — GitHub repo, Supabase proje adı ve migration
+> dosyaları bilinçli olarak bu isimle kalıyor. Canlı sitede görünen marka adı
+> **rtgdanismanlik** (`lib/site-config.ts` → `siteConfig.name`); sadece
+> UI/metadata/OG tarafında kullanılıyor.
+
 Ürün stratejisi, bilgi mimarisi ve tasarım yönü için proje kanalındaki
 strateji dokümanına bakın.
 

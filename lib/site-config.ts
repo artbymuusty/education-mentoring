@@ -12,10 +12,10 @@
  * lib/site-settings.ts, which prefers the DB value and falls back to this.
  */
 export const siteConfig = {
-  name: "Education Mentoring",
-  shortName: "EM",
+  name: "rtgdanismanlik",
+  shortName: "RTG",
   tagline: "Almanya eğitim yolculuğunda yol arkadaşın",
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://education-mentoring.example.com",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://rtgdanismanlik.example.com",
   locale: "tr" as const,
   contact: {
     instagram: process.env.NEXT_PUBLIC_INSTAGRAM_URL || "",

@@ -64,7 +64,7 @@ export default async function AdminSettingsPage({ searchParams }: PageProps<"/ad
               label="WhatsApp numarası"
               defaultValue={settings?.whatsapp_number}
               placeholder="+49 151 000 00 00"
-              helper="Ülke koduyla birlikte gir — wa.me linki otomatik oluşturulur."
+              helper="Ülke koduyla birlikte gir, wa.me linki otomatik oluşturulur."
             />
             <SettingsField
               id="contact_email"

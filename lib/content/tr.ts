@@ -29,13 +29,13 @@ export const tr: Dictionary = {
     },
     stageSelector: {
       title: "Şu anda nerede olursan ol.",
-      subtitle: "Aşağıdakilerden sana en yakın olanı seç — sana uygun cevabı hemen görelim.",
+      subtitle: "Aşağıdakilerden sana en yakın olanı seç, sana uygun cevabı hemen görelim.",
       stages: [
         {
           id: "researching",
           label: "Henüz araştırıyorum",
           description:
-            "Hiçbir şeyin netleşmemiş olması sorun değil. Almanya'da eğitimin nasıl işlediğini, hangi yolların mümkün olduğunu birlikte konuşarak başlayabiliriz.",
+            "Hiçbir şeyin netleşmemiş olması sorun değil. Almanya'da eğitimin nasıl işlediğini, hangi yolların mümkün olduğunu konuşarak başlayabiliriz.",
           cta: "Araştırmama Yardımcı Olun",
         },
         {
@@ -85,7 +85,7 @@ export const tr: Dictionary = {
         id: "unsure",
         label: "Emin değilim",
         description:
-          "Hiçbir sorun değil — nereden başlayacağını bilmiyor olman bizimle konuşman için bir engel değil. Durumunu birlikte netleştirelim.",
+          "Hiçbir sorun değil. Nereden başlayacağını bilmiyor olman bizimle konuşman için bir engel değil, durumunu birlikte netleştirelim.",
         cta: "Birlikte Netleştirelim",
       },
     },
@@ -96,7 +96,7 @@ export const tr: Dictionary = {
     },
     howWeWork: {
       title: "Nasıl çalışıyoruz?",
-      subtitle: "Süreç karmaşık değil — dört adımda birlikte ilerliyoruz.",
+      subtitle: "Süreç karmaşık değil, dört adımda birlikte ilerliyoruz.",
       steps: [
         {
           title: "Seni tanıyoruz",
@@ -126,7 +126,7 @@ export const tr: Dictionary = {
       title: "Bir insanla konuşabilirsin.",
       body: [
         "Burada sana bir şey satmaya çalışmıyoruz. Önce durumunu anlamaya çalışıyoruz.",
-        "Sana uygun olmayan bir yolu 'uygun' gibi göstermeyiz — bu konuda dürüst olmak, boş vaatlerden daha değerli.",
+        "Sana uygun olmayan bir yolu 'uygun' gibi göstermeyiz. Bu konuda dürüst olmak boş vaatlerden daha değerli.",
         "İletişim kurmak kolay: bir form doldur ya da doğrudan WhatsApp'tan yaz.",
       ],
     },
@@ -136,7 +136,7 @@ export const tr: Dictionary = {
     },
     finalCta: {
       title: "Hazırsan konuşalım.",
-      description: "Nerede olduğun önemli değil — durumunu birlikte anlayalım, sonrasında birlikte ilerleyelim.",
+      description: "Nerede olduğun önemli değil. Durumunu birlikte anlayalım, sonrasında birlikte ilerleyelim.",
       ctaPrimary: "Yolculuğunu Konuşalım",
       ctaSecondary: "WhatsApp'tan Yaz",
     },
@@ -245,7 +245,7 @@ export const tr: Dictionary = {
     sections: [
       {
         heading: "Mentor neden var?",
-        body: "Almanya'da eğitim süreci tek bir karardan ibaret değil — bölüm seçiminden başvuruya, vizeden ilk haftalara kadar birçok küçük karar art arda geliyor. Bir mentor, bu kararları tek başına vermek zorunda kalmamanı sağlıyor.",
+        body: "Almanya'da eğitim süreci tek bir karardan ibaret değil. Bölüm seçiminden başvuruya, vizeden ilk haftalara kadar birçok küçük karar art arda geliyor; bir mentor bu kararları tek başına vermek zorunda kalmamanı sağlıyor.",
       },
       {
         heading: "Ne zaman bir mentora ihtiyaç duyarsın?",
@@ -253,11 +253,11 @@ export const tr: Dictionary = {
       },
       {
         heading: "Mentor ne yapıyor?",
-        body: "Durumunu dinler, seçeneklerini birlikte değerlendirir, süreç boyunca hangi adımın ne zaman geldiğini takip eder ve sorularına zamanında cevap verir. Kararı sen verirsin — mentor bu kararı daha bilinçli vermeni sağlar.",
+        body: "Durumunu dinler, seçeneklerini birlikte değerlendirir, süreç boyunca hangi adımın ne zaman geldiğini takip eder ve sorularına zamanında cevap verir. Kararı sen verirsin, mentor bu kararı daha bilinçli vermeni sağlar.",
       },
       {
         heading: "Süreç nasıl ilerliyor?",
-        body: "Bir tanışma görüşmesiyle başlar. Oradan sonra, ihtiyacına göre düzenli aralıklarla iletişimde kalırsınız — bu bazen haftalık bir kontrol, bazen sadece kritik bir aşamada bir görüşme olabilir.",
+        body: "Bir tanışma görüşmesiyle başlar. Oradan sonra ihtiyacına göre düzenli aralıklarla iletişimde kalırsınız; bu bazen haftalık bir kontrol, bazen sadece kritik bir aşamada tek bir görüşme olabilir.",
       },
     ],
     processTitle: "Mentorlukla ilerleyiş",
@@ -269,7 +269,7 @@ export const tr: Dictionary = {
     ],
     cta: {
       title: "Mentorluğun sana nasıl uyabileceğini konuşalım.",
-      description: "Kısa bir görüşmeyle başlayabiliriz — henüz hiçbir şey netleşmemiş olsa bile.",
+      description: "Kısa bir görüşmeyle başlayabiliriz, henüz hiçbir şey netleşmemiş olsa bile.",
       label: "Yolculuğunu Konuşalım",
     },
   },
@@ -288,7 +288,7 @@ export const tr: Dictionary = {
       },
       {
         heading: "Öğrenciye nasıl yaklaşmak istiyoruz?",
-        body: "Yargılamadan. Geç başlamış, notları düşük, dili henüz yeterli değil ya da hedefi belirsiz olabilirsin — bunların hiçbiri konuşmaya başlamak için bir engel değil. Mevcut durumundan ilerleyebileceğin seçenekleri birlikte değerlendiriyoruz.",
+        body: "Yargılamadan. Geç başlamış, notları düşük, dili henüz yeterli değil ya da hedefi belirsiz olabilirsin; bunların hiçbiri konuşmaya başlamak için bir engel değil. Mevcut durumundan ilerleyebileceğin seçenekleri birlikte değerlendiriyoruz.",
       },
       {
         heading: "Nasıl çalışıyoruz?",
@@ -303,7 +303,7 @@ export const tr: Dictionary = {
       {
         question: "Almanya'da üniversite ücretsiz mi?",
         answer:
-          "Çoğu devlet üniversitesinde okul harcı yok, ancak dönemlik bir katkı payı (Semesterbeitrag) genelde bulunuyor. Tam tutar üniversiteye ve eyalete göre değişiyor — durumuna göre birlikte netleştirebiliriz.",
+          "Çoğu devlet üniversitesinde okul harcı yok, ancak dönemlik bir katkı payı (Semesterbeitrag) genelde bulunuyor. Tam tutar üniversiteye ve eyalete göre değişiyor, durumuna göre birlikte netleştirebiliriz.",
       },
       {
         question: "Hangi seviyede Almanca gerekir?",
@@ -313,7 +313,7 @@ export const tr: Dictionary = {
       {
         question: "YKS gerekiyor mu?",
         answer:
-          "Bu, hangi programa ve hangi yolla başvuracağına göre değişiyor. Bazı yollarda gerekmiyor, bazılarında akademik geçmişin farklı şekilde değerlendiriliyor — durumunu konuşarak netleştirelim.",
+          "Bu, hangi programa ve hangi yolla başvuracağına göre değişiyor. Bazı yollarda gerekmiyor, bazılarında akademik geçmişin farklı şekilde değerlendiriliyor. Durumunu konuşarak netleştirelim.",
       },
       {
         question: "Hangi bölümleri okuyabilirim?",
@@ -328,7 +328,7 @@ export const tr: Dictionary = {
       {
         question: "Vize konusunda yardımcı oluyor musunuz?",
         answer:
-          "Evet — belge hazırlığı, randevu takibi ve süreç boyunca ortaya çıkan sorular konusunda yanındayız. Vize kararının kendisi ilgili konsolosluğun yetkisinde, bunu garanti edemeyiz.",
+          "Evet. Belge hazırlığı, randevu takibi ve süreç boyunca ortaya çıkan sorular konusunda yanındayız; vize kararının kendisi ilgili konsolosluğun yetkisinde olduğu için bunu garanti edemeyiz.",
       },
       {
         question: "Almanya'ya gittikten sonra destek devam ediyor mu?",
@@ -344,7 +344,7 @@ export const tr: Dictionary = {
   },
   contact: {
     title: "İletişim",
-    intro: "Sana en uygun kanaldan ulaşabilirsin — hepsi aynı yere çıkıyor: bir insanla konuşmak.",
+    intro: "Sana en uygun kanaldan ulaşabilirsin, hepsi aynı yere çıkıyor: bir insanla konuşmak.",
     whatsapp: {
       title: "WhatsApp",
       description: "Hızlı bir sorun mu var? Doğrudan yazabilirsin.",
@@ -357,7 +357,7 @@ export const tr: Dictionary = {
     },
     formCta: {
       title: "Durumunu anlatarak başla",
-      description: "Birkaç kısa soruyla seni tanıyalım — sana uygun bir görüşme hazırlayalım.",
+      description: "Birkaç kısa soruyla seni tanıyalım, sana uygun bir görüşme hazırlayalım.",
       cta: "Yolculuğunu Konuşalım",
     },
   },
@@ -462,7 +462,7 @@ export const tr: Dictionary = {
     ],
     contactStep: {
       title: "Sana nasıl ulaşalım?",
-      description: "Son adım — bu bilgilerle görüşmene hazırlıklı geleceğiz.",
+      description: "Son adım. Bu bilgilerle görüşmene hazırlıklı geleceğiz.",
       fields: {
         firstName: "Ad",
         lastName: "Soyad",
@@ -493,7 +493,7 @@ export const tr: Dictionary = {
   },
   footer: {
     description:
-      "Almanya'da eğitim hayatını ilerletmek isteyen herkes için — nereden başlarsan başla, bir sonraki adımı birlikte buluyoruz.",
+      "Almanya'da eğitim hayatını ilerletmek isteyen herkes için: nereden başlarsan başla, bir sonraki adımı birlikte buluyoruz.",
     navTitle: "Sayfalar",
     legalTitle: "Yasal",
     legalLinks: [
