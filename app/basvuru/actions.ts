@@ -43,7 +43,7 @@ export async function submitLead(input: LeadInput): Promise<SubmitLeadResult> {
       ok: false,
       error:
         err instanceof Error && err.message.startsWith("Supabase yapılandırılmamış")
-          ? "Bağlantı henüz kurulmadı. Lütfen doğrudan WhatsApp'tan yaz."
+          ? "Bağlantı henüz kurulmadı. Lütfen İletişim sayfasındaki kanallardan bize ulaş."
           : "Beklenmedik bir hata oluştu. Lütfen tekrar dene.",
     };
   }

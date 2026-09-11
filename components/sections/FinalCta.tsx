@@ -5,6 +5,7 @@ import { Container } from "@/components/ui/Container";
 
 export function FinalCta() {
   const t = getDictionary().home.finalCta;
+  const whatsapp = whatsappLink();
 
   return (
     <section className="bg-ink py-16 text-paper sm:py-20">
@@ -13,9 +14,11 @@ export function FinalCta() {
         <p className="mt-4 text-paper/75">{t.description}</p>
         <div className="mt-7 flex flex-wrap justify-center gap-3">
           <Button href="/basvuru">{t.ctaPrimary}</Button>
-          <Button href={whatsappLink()} variant="secondary" className="!border-paper !text-paper hover:!bg-paper hover:!text-ink">
-            {t.ctaSecondary}
-          </Button>
+          {whatsapp ? (
+            <Button href={whatsapp} variant="secondary" className="!border-paper !text-paper hover:!bg-paper hover:!text-ink">
+              {t.ctaSecondary}
+            </Button>
+          ) : null}
         </div>
       </Container>
     </section>

@@ -111,15 +111,18 @@ export function AssessmentFlow({ initialStage }: { initialStage?: string }) {
   }
 
   if (status === "success") {
+    const whatsapp = whatsappLink();
     return (
       <div className="max-w-xl">
         <h1 className="font-display text-4xl font-semibold">{t.success.title}</h1>
         <p className="mt-4 text-lg text-muted">{t.success.description}</p>
-        <p className="mt-6 text-sm text-muted">{t.success.whatsappCta}</p>
+        {whatsapp ? <p className="mt-6 text-sm text-muted">{t.success.whatsappCta}</p> : null}
         <div className="mt-4 flex flex-wrap gap-3">
-          <Button href={whatsappLink()} variant="secondary">
-            WhatsApp&apos;tan Yaz
-          </Button>
+          {whatsapp ? (
+            <Button href={whatsapp} variant="secondary">
+              WhatsApp&apos;tan Yaz
+            </Button>
+          ) : null}
           <Button href="/" variant="ghost">
             {t.success.backHome}
           </Button>

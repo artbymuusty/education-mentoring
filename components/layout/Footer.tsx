@@ -1,10 +1,11 @@
 import Link from "next/link";
 import { getDictionary } from "@/lib/content";
-import { siteConfig, whatsappLink } from "@/lib/site-config";
+import { siteConfig, hasEmail, whatsappLink } from "@/lib/site-config";
 import { Container } from "@/components/ui/Container";
 
 export function Footer() {
   const t = getDictionary();
+  const whatsapp = whatsappLink();
 
   const navLinks = [
     { href: "/nasil-yardimci-oluyoruz", label: t.nav.services },
@@ -21,12 +22,16 @@ export function Footer() {
           <p className="font-display text-lg font-semibold">{siteConfig.name}</p>
           <p className="mt-3 max-w-xs text-sm text-muted">{t.footer.description}</p>
           <div className="mt-4 flex flex-col gap-1 text-sm">
-            <a href={whatsappLink()} className="text-accent hover:underline">
-              WhatsApp
-            </a>
-            <a href={`mailto:${siteConfig.contact.email}`} className="text-accent hover:underline">
-              {siteConfig.contact.email}
-            </a>
+            {whatsapp ? (
+              <a href={whatsapp} className="text-accent hover:underline">
+                WhatsApp
+              </a>
+            ) : null}
+            {hasEmail ? (
+              <a href={`mailto:${siteConfig.contact.email}`} className="text-accent hover:underline">
+                {siteConfig.contact.email}
+              </a>
+            ) : null}
             {siteConfig.contact.instagram ? (
               <a href={siteConfig.contact.instagram} className="text-accent hover:underline">
                 Instagram

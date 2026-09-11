@@ -1,17 +1,28 @@
 import type { Metadata } from "next";
 import { getDictionary } from "@/lib/content";
-import { siteConfig, whatsappLink } from "@/lib/site-config";
+import { siteConfig, hasEmail, whatsappLink } from "@/lib/site-config";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { Container } from "@/components/ui/Container";
+import { cn } from "@/lib/cn";
 
 export function generateMetadata(): Metadata {
   const t = getDictionary().contact;
-  return { title: t.title, description: t.intro };
+  return { title: t.title, description: t.intro, alternates: { canonical: "/iletisim" } };
 }
 
 export default function ContactPage() {
   const t = getDictionary().contact;
+  const whatsapp = whatsappLink();
+
+  const channels = [
+    whatsapp
+      ? { key: "whatsapp", title: t.whatsapp.title, description: t.whatsapp.description, cta: t.whatsapp.cta, href: whatsapp }
+      : null,
+    hasEmail
+      ? { key: "email", title: t.email.title, description: t.email.description, cta: t.email.cta, href: `mailto:${siteConfig.contact.email}` }
+      : null,
+  ].filter((c): c is NonNullable<typeof c> => c !== null);
 
   return (
     <div className="py-16 sm:py-20">
@@ -20,26 +31,21 @@ export default function ContactPage() {
         <p className="mt-4 text-lg text-muted">{t.intro}</p>
       </Container>
 
-      <Container className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2">
-        <Card>
-          <h2 className="font-display text-lg font-semibold">{t.whatsapp.title}</h2>
-          <p className="mt-2 text-sm text-muted">{t.whatsapp.description}</p>
-          <Button href={whatsappLink()} variant="secondary" className="mt-5 !px-4 !py-2.5 text-sm">
-            {t.whatsapp.cta}
-          </Button>
-        </Card>
-        <Card>
-          <h2 className="font-display text-lg font-semibold">{t.email.title}</h2>
-          <p className="mt-2 text-sm text-muted">{t.email.description}</p>
-          <Button
-            href={`mailto:${siteConfig.contact.email}`}
-            variant="secondary"
-            className="mt-5 !px-4 !py-2.5 text-sm"
-          >
-            {t.email.cta}
-          </Button>
-        </Card>
-      </Container>
+      {channels.length > 0 ? (
+        <Container
+          className={cn("mt-12 grid grid-cols-1 gap-4", channels.length > 1 && "sm:grid-cols-2")}
+        >
+          {channels.map((channel) => (
+            <Card key={channel.key}>
+              <h2 className="font-display text-lg font-semibold">{channel.title}</h2>
+              <p className="mt-2 text-sm text-muted">{channel.description}</p>
+              <Button href={channel.href} variant="secondary" className="mt-5 !px-4 !py-2.5 text-sm">
+                {channel.cta}
+              </Button>
+            </Card>
+          ))}
+        </Container>
+      ) : null}
 
       <Container className="mt-8 max-w-3xl rounded-[3px] border border-accent bg-paper-raised p-8">
         <h2 className="font-display text-xl font-semibold">{t.formCta.title}</h2>
