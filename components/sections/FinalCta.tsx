@@ -1,11 +1,12 @@
 import { getDictionary } from "@/lib/content";
-import { whatsappLink } from "@/lib/site-config";
+import { getSiteSettings, whatsappLinkFor } from "@/lib/site-settings";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 
-export function FinalCta() {
+export async function FinalCta() {
   const t = getDictionary().home.finalCta;
-  const whatsapp = whatsappLink();
+  const settings = await getSiteSettings();
+  const whatsapp = whatsappLinkFor(settings);
 
   return (
     <section className="bg-ink py-16 text-paper sm:py-20">

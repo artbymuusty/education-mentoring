@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
-import { hasEmail, siteConfig } from "@/lib/site-config";
+import { siteConfig } from "@/lib/site-config";
+import { getSiteSettings } from "@/lib/site-settings";
 
 export const metadata: Metadata = {
   title: "KVKK Aydınlatma Metni",
@@ -9,8 +10,9 @@ export const metadata: Metadata = {
   alternates: { canonical: "/kvkk" },
 };
 
-export default function KvkkPage() {
-  const { companyName, companyAddress, mersisNo, taxOffice, taxNumber } = siteConfig.legal;
+export default async function KvkkPage() {
+  const settings = await getSiteSettings();
+  const { companyName, companyAddress, mersisNo, taxOffice, taxNumber } = settings;
   const controllerName = companyName || siteConfig.name;
 
   return (
@@ -48,8 +50,8 @@ export default function KvkkPage() {
             <h2 className="font-display text-lg font-semibold">Haklarınız</h2>
             <p className="mt-2 text-muted">
               KVKK madde 11 kapsamındaki haklarını kullanmak için{" "}
-              {hasEmail ? (
-                <>{siteConfig.contact.email} adresine yazabilirsin.</>
+              {settings.contactEmail ? (
+                <>{settings.contactEmail} adresine yazabilirsin.</>
               ) : (
                 <>
                   <Link href="/iletisim" className="text-accent hover:underline">

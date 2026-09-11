@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
-import { hasEmail, siteConfig } from "@/lib/site-config";
+import { siteConfig } from "@/lib/site-config";
+import { getSiteSettings } from "@/lib/site-settings";
 
 export const metadata: Metadata = {
   title: "Gizlilik Politikası",
@@ -9,8 +10,9 @@ export const metadata: Metadata = {
   alternates: { canonical: "/gizlilik" },
 };
 
-export default function PrivacyPage() {
-  const controllerName = siteConfig.legal.companyName || siteConfig.name;
+export default async function PrivacyPage() {
+  const settings = await getSiteSettings();
+  const controllerName = settings.companyName || siteConfig.name;
 
   return (
     <div className="py-16 sm:py-20">
@@ -24,7 +26,7 @@ export default function PrivacyPage() {
             <h2 className="font-display text-lg font-semibold">Veri sorumlusu</h2>
             <p className="mt-2 text-muted">
               {controllerName}
-              {siteConfig.legal.companyAddress ? `, ${siteConfig.legal.companyAddress}` : ""}.
+              {settings.companyAddress ? `, ${settings.companyAddress}` : ""}.
             </p>
           </div>
           <div>
@@ -47,8 +49,8 @@ export default function PrivacyPage() {
             <p className="mt-2 text-muted">
               Bilgilerin, erişimi yalnızca yetkili ekip üyeleriyle sınırlı olan güvenli bir veritabanında
               saklanır.{" "}
-              {hasEmail ? (
-                <>Bilgilerinin silinmesini istediğinde {siteConfig.contact.email} adresine yazabilirsin.</>
+              {settings.contactEmail ? (
+                <>Bilgilerinin silinmesini istediğinde {settings.contactEmail} adresine yazabilirsin.</>
               ) : (
                 <>
                   Bilgilerinin silinmesini istediğinde{" "}

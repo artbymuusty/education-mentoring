@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/ui/Container";
 import { AssessmentFlow } from "@/components/assessment/AssessmentFlow";
+import { getSiteSettings, whatsappLinkFor } from "@/lib/site-settings";
 
 export const metadata: Metadata = {
   title: "Seni Biraz Tanıyalım",
@@ -13,10 +14,13 @@ export default async function AssessmentPage({ searchParams }: PageProps<"/basvu
   const rawStage = params.asama;
   const initialStage = typeof rawStage === "string" ? rawStage : undefined;
 
+  const settings = await getSiteSettings();
+  const whatsapp = whatsappLinkFor(settings);
+
   return (
     <div className="py-16 sm:py-20">
       <Container>
-        <AssessmentFlow initialStage={initialStage} />
+        <AssessmentFlow initialStage={initialStage} whatsappLink={whatsapp} />
       </Container>
     </div>
   );

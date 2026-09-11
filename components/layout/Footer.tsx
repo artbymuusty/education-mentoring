@@ -1,11 +1,13 @@
 import Link from "next/link";
 import { getDictionary } from "@/lib/content";
-import { siteConfig, hasEmail, whatsappLink } from "@/lib/site-config";
+import { siteConfig } from "@/lib/site-config";
+import { getSiteSettings, whatsappLinkFor } from "@/lib/site-settings";
 import { Container } from "@/components/ui/Container";
 
-export function Footer() {
+export async function Footer() {
   const t = getDictionary();
-  const whatsapp = whatsappLink();
+  const settings = await getSiteSettings();
+  const whatsapp = whatsappLinkFor(settings);
 
   const navLinks = [
     { href: "/nasil-yardimci-oluyoruz", label: t.nav.services },
@@ -27,9 +29,9 @@ export function Footer() {
                 WhatsApp
               </a>
             ) : null}
-            {hasEmail ? (
-              <a href={`mailto:${siteConfig.contact.email}`} className="text-accent hover:underline">
-                {siteConfig.contact.email}
+            {settings.contactEmail ? (
+              <a href={`mailto:${settings.contactEmail}`} className="text-accent hover:underline">
+                {settings.contactEmail}
               </a>
             ) : null}
             {siteConfig.contact.instagram ? (

@@ -5,6 +5,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { getDictionary } from "@/lib/content";
 import { siteConfig } from "@/lib/site-config";
+import { getSiteSettings, resolveSiteUrl } from "@/lib/site-settings";
 import { getOrganizationJsonLd } from "@/lib/structured-data";
 
 const fraunces = Fraunces({
@@ -27,35 +28,43 @@ const plexMono = IBM_Plex_Mono({
 
 const t = getDictionary();
 
-export const metadata: Metadata = {
-  metadataBase: new URL(siteConfig.url),
-  title: {
-    default: t.meta.defaultTitle,
-    template: t.meta.titleTemplate,
-  },
-  description: t.meta.defaultDescription,
-  alternates: {
-    canonical: "/",
-  },
-  openGraph: {
-    type: "website",
-    locale: "tr_TR",
-    siteName: siteConfig.name,
-    title: t.meta.defaultTitle,
-    description: t.meta.defaultDescription,
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: t.meta.defaultTitle,
-    description: t.meta.defaultDescription,
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const settings = await getSiteSettings();
+  const resolvedUrl = resolveSiteUrl(settings);
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+  return {
+    metadataBase: new URL(resolvedUrl),
+    title: {
+      default: t.meta.defaultTitle,
+      template: t.meta.titleTemplate,
+    },
+    description: t.meta.defaultDescription,
+    alternates: {
+      canonical: "/",
+    },
+    openGraph: {
+      type: "website",
+      locale: "tr_TR",
+      siteName: siteConfig.name,
+      title: t.meta.defaultTitle,
+      description: t.meta.defaultDescription,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t.meta.defaultTitle,
+      description: t.meta.defaultDescription,
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
+}
+
+export default async function RootLayout({ children }: LayoutProps<"/">) {
+  const settings = await getSiteSettings();
+  const resolvedUrl = resolveSiteUrl(settings);
+
   return (
     <html
       lang="tr"
@@ -64,7 +73,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="flex min-h-full flex-col font-body">
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(getOrganizationJsonLd()) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(getOrganizationJsonLd(settings, resolvedUrl)) }}
         />
         <a
           href="#main-content"

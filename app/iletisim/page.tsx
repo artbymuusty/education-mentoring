@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { getDictionary } from "@/lib/content";
-import { siteConfig, hasEmail, whatsappLink } from "@/lib/site-config";
+import { getSiteSettings, whatsappLinkFor } from "@/lib/site-settings";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { Container } from "@/components/ui/Container";
@@ -11,16 +11,17 @@ export function generateMetadata(): Metadata {
   return { title: t.title, description: t.intro, alternates: { canonical: "/iletisim" } };
 }
 
-export default function ContactPage() {
+export default async function ContactPage() {
   const t = getDictionary().contact;
-  const whatsapp = whatsappLink();
+  const settings = await getSiteSettings();
+  const whatsapp = whatsappLinkFor(settings);
 
   const channels = [
     whatsapp
       ? { key: "whatsapp", title: t.whatsapp.title, description: t.whatsapp.description, cta: t.whatsapp.cta, href: whatsapp }
       : null,
-    hasEmail
-      ? { key: "email", title: t.email.title, description: t.email.description, cta: t.email.cta, href: `mailto:${siteConfig.contact.email}` }
+    settings.contactEmail
+      ? { key: "email", title: t.email.title, description: t.email.description, cta: t.email.cta, href: `mailto:${settings.contactEmail}` }
       : null,
   ].filter((c): c is NonNullable<typeof c> => c !== null);
 

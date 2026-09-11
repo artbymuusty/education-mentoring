@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
-import { hasEmail, siteConfig } from "@/lib/site-config";
+import { siteConfig } from "@/lib/site-config";
+import { getSiteSettings } from "@/lib/site-settings";
 
 export const metadata: Metadata = {
   title: "Kullanım Şartları",
@@ -9,7 +10,9 @@ export const metadata: Metadata = {
   alternates: { canonical: "/kullanim-sartlari" },
 };
 
-export default function TermsPage() {
+export default async function TermsPage() {
+  const settings = await getSiteSettings();
+
   return (
     <div className="py-16 sm:py-20">
       <Container className="max-w-2xl">
@@ -33,8 +36,8 @@ export default function TermsPage() {
           <div>
             <h2 className="font-display text-lg font-semibold">İletişim</h2>
             <p className="mt-2 text-muted">
-              {hasEmail ? (
-                <>Sorularınız için {siteConfig.contact.email} adresinden bize ulaşabilirsiniz.</>
+              {settings.contactEmail ? (
+                <>Sorularınız için {settings.contactEmail} adresinden bize ulaşabilirsiniz.</>
               ) : (
                 <>
                   Sorularınız için{" "}

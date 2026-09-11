@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { siteConfig } from "@/lib/site-config";
+import { getSiteSettings, resolveSiteUrl } from "@/lib/site-settings";
 
 const routes = [
   "",
@@ -14,9 +14,12 @@ const routes = [
   "/kullanim-sartlari",
 ];
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const settings = await getSiteSettings();
+  const baseUrl = resolveSiteUrl(settings);
+
   return routes.map((route) => ({
-    url: `${siteConfig.url}${route}`,
+    url: `${baseUrl}${route}`,
     lastModified: new Date(),
     changeFrequency: route === "" ? "weekly" : "monthly",
     priority: route === "" ? 1 : 0.6,

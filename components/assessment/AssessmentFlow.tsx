@@ -3,7 +3,6 @@
 import { useMemo, useState } from "react";
 import { getDictionary } from "@/lib/content";
 import type { AssessmentOption } from "@/lib/content/types";
-import { whatsappLink } from "@/lib/site-config";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/cn";
 import { submitLead } from "@/app/basvuru/actions";
@@ -22,7 +21,13 @@ const emptyContact: Contact = {
   note: "",
 };
 
-export function AssessmentFlow({ initialStage }: { initialStage?: string }) {
+export function AssessmentFlow({
+  initialStage,
+  whatsappLink,
+}: {
+  initialStage?: string;
+  whatsappLink: string | null;
+}) {
   const t = getDictionary().assessment;
   const steps = t.steps;
 
@@ -111,15 +116,14 @@ export function AssessmentFlow({ initialStage }: { initialStage?: string }) {
   }
 
   if (status === "success") {
-    const whatsapp = whatsappLink();
     return (
       <div className="max-w-xl">
         <h1 className="font-display text-4xl font-semibold">{t.success.title}</h1>
         <p className="mt-4 text-lg text-muted">{t.success.description}</p>
-        {whatsapp ? <p className="mt-6 text-sm text-muted">{t.success.whatsappCta}</p> : null}
+        {whatsappLink ? <p className="mt-6 text-sm text-muted">{t.success.whatsappCta}</p> : null}
         <div className="mt-4 flex flex-wrap gap-3">
-          {whatsapp ? (
-            <Button href={whatsapp} variant="secondary">
+          {whatsappLink ? (
+            <Button href={whatsappLink} variant="secondary">
               WhatsApp&apos;tan Yaz
             </Button>
           ) : null}
