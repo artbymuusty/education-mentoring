@@ -1,6 +1,7 @@
 /**
- * Hand-written to match supabase/migrations/0001_init.sql. Once a real
- * Supabase project is connected, regenerate with:
+ * Hand-written to match supabase/migrations/0001_init.sql and
+ * 0002_site_settings.sql. Once a real Supabase project is connected,
+ * regenerate with:
  *   npx supabase gen types typescript --project-id <ref> > lib/supabase/types.ts
  * (or the `generate_typescript_types` Supabase MCP tool) and keep this
  * header removed.
@@ -70,6 +71,38 @@ export interface Database {
           created_at?: string;
         };
         Update: Partial<Database["public"]["Tables"]["profiles"]["Insert"]>;
+        Relationships: [];
+      };
+      site_settings: {
+        Row: {
+          id: string;
+          singleton: boolean;
+          whatsapp_number: string | null;
+          contact_email: string | null;
+          company_name: string | null;
+          company_address: string | null;
+          tax_office: string | null;
+          tax_number: string | null;
+          mersis_no: string | null;
+          production_domain: string | null;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          singleton?: boolean;
+          whatsapp_number?: string | null;
+          contact_email?: string | null;
+          company_name?: string | null;
+          company_address?: string | null;
+          tax_office?: string | null;
+          tax_number?: string | null;
+          mersis_no?: string | null;
+          production_domain?: string | null;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: Partial<Database["public"]["Tables"]["site_settings"]["Insert"]>;
         Relationships: [];
       };
     };
