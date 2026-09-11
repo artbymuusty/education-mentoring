@@ -1,8 +1,8 @@
-import Link from "next/link";
 import { requireAdmin } from "@/lib/supabase/require-admin";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { SettingsField } from "@/components/admin/SettingsField";
+import { AdminNav } from "@/components/admin/AdminNav";
 import { updateSiteSettings } from "./actions";
 
 export const dynamic = "force-dynamic";
@@ -29,10 +29,8 @@ export default async function AdminSettingsPage({ searchParams }: PageProps<"/ad
     <div className="py-12">
       <Container className="max-w-2xl">
         <div className="border-b border-line pb-6">
-          <Link href="/admin/leads" className="text-sm text-accent hover:underline">
-            ← Lead Yönetimi
-          </Link>
-          <h1 className="mt-2 font-display text-2xl font-semibold">Site Ayarları</h1>
+          <AdminNav current="/admin/settings" />
+          <h1 className="mt-4 font-display text-2xl font-semibold">Site Ayarları</h1>
           <p className="mt-1 text-sm text-muted">
             Buradaki bilgiler public sitede (footer, iletişim, yasal sayfalar) otomatik olarak görünür.
             Boş bıraktığın alanlar public sitede hiç gösterilmez.

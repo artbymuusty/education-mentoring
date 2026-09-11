@@ -17,9 +17,3 @@ export async function updateLeadStatus(leadId: string, formData: FormData) {
 
   revalidatePath("/admin/leads");
 }
-
-export async function signOutAdmin() {
-  const { supabase } = await requireAdmin();
-  await supabase.auth.signOut();
-  revalidatePath("/admin/leads");
-}
