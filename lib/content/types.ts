@@ -62,6 +62,18 @@ export interface FaqItem {
   answer: string;
 }
 
+export interface PricingTier {
+  id: string;
+  name: string;
+  tagline: string;
+  description: string;
+  priceLabel: string;
+  /** ServiceItem.slug values this tier draws on — never invented feature copy. */
+  includes: string[];
+  idealFor: string;
+  cta: string;
+}
+
 export type AssessmentQuestionType = "single" | "text";
 
 export interface AssessmentOption {
@@ -91,6 +103,7 @@ export interface Dictionary {
     services: string;
     mentorship: string;
     about: string;
+    pricing: string;
     faq: string;
     contact: string;
     ctaPrimary: string;
@@ -162,6 +175,18 @@ export interface Dictionary {
     /** Optional real photo (team/office) — omitted, not stock art, until one exists. */
     imageSrc?: string;
     imageAlt?: string;
+  };
+  pricing: {
+    title: string;
+    intro: string;
+    intake: { eyebrow: string; title: string; description: string; cta: string };
+    tiersTitle: string;
+    tiersSubtitle: string;
+    tiers: PricingTier[];
+    comparisonTitle: string;
+    comparisonNote: string;
+    honestyNote: string;
+    cta: { title: string; description: string; label: string };
   };
   faq: {
     title: string;

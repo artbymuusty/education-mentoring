@@ -14,6 +14,7 @@ export async function Footer() {
     { href: "/nasil-yardimci-oluyoruz", label: t.nav.services },
     { href: "/mentorluk", label: t.nav.mentorship },
     { href: "/hakkimizda", label: t.nav.about },
+    { href: "/fiyatlar", label: t.nav.pricing },
     { href: "/sss", label: t.nav.faq },
     { href: "/iletisim", label: t.nav.contact },
     { href: "/bize-katilin", label: "Bize Katılın" },

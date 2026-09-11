@@ -6,6 +6,7 @@ const routes = [
   "/nasil-yardimci-oluyoruz",
   "/mentorluk",
   "/hakkimizda",
+  "/fiyatlar",
   "/sss",
   "/iletisim",
   "/basvuru",

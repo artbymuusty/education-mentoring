@@ -14,6 +14,7 @@ export const tr: Dictionary = {
     services: "Nasıl Yardımcı Oluyoruz?",
     mentorship: "Mentorluk",
     about: "Hakkımızda",
+    pricing: "Fiyatlar",
     faq: "Sık Sorulanlar",
     contact: "İletişim",
     ctaPrimary: "Yolculuğunu Konuşalım",
@@ -295,6 +296,65 @@ export const tr: Dictionary = {
         body: "Önce dinliyoruz, sonra yönlendiriyoruz. Süreç boyunca hangi adımın ne zaman geldiğini takip ediyor, sorularına zamanında cevap veriyoruz. Söz verirken gerçekçi kalıyoruz; uygun olmayan bir yolu 'uygun' gibi göstermiyoruz.",
       },
     ],
+  },
+  pricing: {
+    title: "Fiyatlandırma",
+    intro:
+      "Sabit bir fiyat listesi yayınlamıyoruz, çünkü ihtiyacın senin durumuna göre değişiyor. Bunun yerine önce durumunu anlıyor, sonra sana uygun kapsamı ve ücreti birlikte netleştiriyoruz.",
+    intake: {
+      eyebrow: "İlk Adım",
+      title: "İlk görüşme",
+      description:
+        "Her şey kısa bir tanışma görüşmesiyle başlıyor. Bu görüşmede seni ve hedefini dinliyor, aşağıdaki üç kapsamdan hangisinin sana uygun olabileceğini birlikte konuşuyoruz. Hiçbir şeye karar vermiş olman gerekmiyor.",
+      cta: "İlk Görüşmeyi Başlat",
+    },
+    tiersTitle: "Sana uygun kapsam",
+    tiersSubtitle:
+      "Üç farklı kapsam sunuyoruz; hangisinin sana uygun olduğuna birlikte karar veriyoruz. Kesin ücret, konuştuğumuz kapsama göre netleşiyor.",
+    tiers: [
+      {
+        id: "yol-haritasi",
+        name: "Yol Haritası",
+        tagline: "Tek seferlik, net bir yön",
+        description:
+          "Nereden başlayacağını ya da başvurunu nasıl organize edeceğini netleştirmek istiyorsan, bu kapsam sana yeterli olabilir.",
+        priceLabel: "Görüşmede birlikte netleştiriyoruz",
+        includes: ["egitim-yonlendirme", "basvuru-sureci"],
+        idealFor: "Henüz araştırma ya da başvuru hazırlığı aşamasında olanlar için.",
+        cta: "Detayları Konuşalım",
+      },
+      {
+        id: "birebir-mentorluk",
+        name: "Birebir Mentorluk",
+        tagline: "Süreç boyunca düzenli destek",
+        description:
+          "Tek bir görüşme yetmiyorsa, bir mentorla düzenli iletişimde kalarak süreç ilerledikçe çıkan sorulara zamanında cevap buluyorsun.",
+        priceLabel: "Sürece göre birlikte belirliyoruz",
+        includes: ["egitim-yonlendirme", "basvuru-sureci", "mentorluk"],
+        idealFor: "Sadece bir kez değil, süreç boyunca yanında birini isteyenler için.",
+        cta: "Detayları Konuşalım",
+      },
+      {
+        id: "kapsamli-destek",
+        name: "Kapsamlı Destek",
+        tagline: "Başvurudan Almanya'daki ilk haftalara",
+        description:
+          "Başvurudan vizeye, vizeden Almanya'daki ilk haftalara kadar sürecin tamamında yanında olmamızı istiyorsan bu kapsamı konuşabiliriz.",
+        priceLabel: "İhtiyacına göre birlikte planlıyoruz",
+        includes: ["egitim-yonlendirme", "basvuru-sureci", "mentorluk", "vize-hazirlik", "almanyaya-hazirlik"],
+        idealFor: "Sürecin başından Almanya'ya yerleşene kadar kapsamlı destek isteyenler için.",
+        cta: "Detayları Konuşalım",
+      },
+    ],
+    comparisonTitle: "Kapsamları karşılaştır",
+    comparisonNote: "Her kapsamın hangi hizmetleri içerdiğini aşağıda görebilirsin. Detaylar için ilgili hizmeti incele.",
+    honestyNote:
+      "Burada net bir sayı görmemenin nedeni gizlilik değil, dürüstlük: ihtiyacın netleşmeden bir rakam vermek gerçekçi olmazdı. Görüşmede konuştuğumuz kapsam dışında sürpriz bir ücretle karşılaşmazsın.",
+    cta: {
+      title: "Hangi kapsamın sana uygun olduğunu birlikte konuşalım.",
+      description: "Karar vermiş olman gerekmiyor. Durumunu anlat, uygun kapsamı birlikte bulalım.",
+      label: "Yolculuğunu Konuşalım",
+    },
   },
   faq: {
     title: "Sık sorulanlar",
