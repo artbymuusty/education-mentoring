@@ -4,6 +4,7 @@ import { ServicesOverview } from "@/components/sections/ServicesOverview";
 import { HowWeWork } from "@/components/sections/HowWeWork";
 import { MentorshipTeaser } from "@/components/sections/MentorshipTeaser";
 import { TrustSection } from "@/components/sections/TrustSection";
+import { StudentStories } from "@/components/sections/StudentStories";
 import { FaqPreview } from "@/components/sections/FaqPreview";
 import { FinalCta } from "@/components/sections/FinalCta";
 
@@ -16,6 +17,7 @@ export default function Home() {
       <HowWeWork />
       <MentorshipTeaser />
       <TrustSection />
+      <StudentStories />
       <FaqPreview />
       <FinalCta />
     </>
