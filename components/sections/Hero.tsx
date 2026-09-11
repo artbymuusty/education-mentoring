@@ -1,7 +1,7 @@
 import { getDictionary } from "@/lib/content";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-import { EditorialPhoto } from "@/components/ui/EditorialPhoto";
+import { WorldMap } from "@/components/ui/WorldMap";
 
 export function Hero() {
   const t = getDictionary().home.hero;
@@ -23,13 +23,7 @@ export function Hero() {
           </div>
         </div>
 
-        {/*
-          Journey visual slot: a real photo (public/images/hero/...) or,
-          eventually, the Türkiye→Almanya WorldMap component once its
-          reference implementation is provided. Until then: an abstract
-          map-motif panel in brand tokens, never a stock photo.
-        */}
-        <EditorialPhoto alt="Almanya'da eğitim yolculuğu" ratio="4 / 5" className="hidden sm:block" />
+        <WorldMap />
       </Container>
     </section>
   );
