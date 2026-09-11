@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { requireAdmin } from "@/lib/supabase/require-admin";
 import { Container } from "@/components/ui/Container";
 import { updateLeadStatus, signOutAdmin } from "./actions";
@@ -32,11 +33,16 @@ export default async function AdminLeadsPage() {
             <h1 className="font-display text-2xl font-semibold">Lead Yönetimi</h1>
             <p className="mt-1 text-sm text-muted">Hoş geldin, {profile.full_name ?? "yönetici"}.</p>
           </div>
-          <form action={signOutAdmin}>
-            <button type="submit" className="text-sm text-accent hover:underline">
-              Çıkış yap
-            </button>
-          </form>
+          <div className="flex items-center gap-4">
+            <Link href="/admin/settings" className="text-sm text-accent hover:underline">
+              Site Ayarları
+            </Link>
+            <form action={signOutAdmin}>
+              <button type="submit" className="text-sm text-accent hover:underline">
+                Çıkış yap
+              </button>
+            </form>
+          </div>
         </div>
 
         {error ? (
