@@ -175,6 +175,28 @@ export interface Dictionary {
     email: { title: string; description: string; cta: string };
     formCta: { title: string; description: string; cta: string };
   };
+  bizeKatilin: {
+    title: string;
+    intro: string;
+    sections: { heading: string; body: string }[];
+    formTitle: string;
+    formDescription: string;
+    fields: {
+      firstName: string;
+      lastName: string;
+      phone: string;
+      email: string;
+      germanyExperience: string;
+      germanyExperiencePlaceholder: string;
+      motivation: string;
+      motivationPlaceholder: string;
+      message: string;
+      messagePlaceholder: string;
+    };
+    submit: { label: string; loading: string };
+    success: { title: string; description: string; backHome: string };
+    error: { description: string };
+  };
   assessment: {
     intro: { eyebrow: string; title: string; description: string; startCta: string };
     steps: AssessmentStep[];

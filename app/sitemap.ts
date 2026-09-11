@@ -9,6 +9,7 @@ const routes = [
   "/sss",
   "/iletisim",
   "/basvuru",
+  "/bize-katilin",
   "/gizlilik",
   "/kvkk",
   "/kullanim-sartlari",

@@ -361,6 +361,49 @@ export const tr: Dictionary = {
       cta: "Yolculuğunu Konuşalım",
     },
   },
+  bizeKatilin: {
+    title: "Bize Katılın",
+    intro: "Almanya'da eğitim deneyimin varsa ve bu yolda birine yol arkadaşı olmak istiyorsan, seni dinlemek isteriz.",
+    sections: [
+      {
+        heading: "Neden mentor olabilirsin?",
+        body: "Almanya'da okudun ya da hâlâ okuyorsun. Başvuru, vize, yeni bir şehirde hayata tutunma gibi süreçlerin nasıl hissettirdiğini biliyorsun. Bu deneyim, senden sonra gelen birine büyük fark yaratır.",
+      },
+      {
+        heading: "Kimleri arıyoruz?",
+        body: "Belirli bir unvan aramıyoruz. Aradığımız şey: sürecin içinden gerçekten geçmiş olmak ve bir öğrencinin sorularına zaman ayırmaya istekli olmak.",
+      },
+      {
+        heading: "Mentor olarak ne yaparsın?",
+        body: "Öğrencinin durumunu dinler, sorularını cevaplarsın; bazen tek bir görüşme, bazen süreç boyunca düzenli bir iletişim olur. Ne kadar zaman ayırabileceğini birlikte konuşuruz.",
+      },
+      {
+        heading: "Nasıl çalışıyoruz?",
+        body: "Başvurundan sonra kısa bir tanışma görüşmesi yapıyoruz. Uygun görürsek, sana uygun bir öğrenciyle veya süreçle eşleştiriyoruz.",
+      },
+    ],
+    formTitle: "Başvuru formu",
+    formDescription: "Birkaç bilgiyle başlayalım, geri kalanını görüşmede konuşuruz.",
+    fields: {
+      firstName: "Ad",
+      lastName: "Soyad",
+      phone: "Telefon / WhatsApp",
+      email: "E-posta",
+      germanyExperience: "Almanya deneyimin nedir?",
+      germanyExperiencePlaceholder: "Hangi şehir, hangi üniversite/program, ne zaman?",
+      motivation: "Neden mentor olmak istiyorsun?",
+      motivationPlaceholder: "Birkaç cümleyle anlatman yeterli.",
+      message: "Eklemek istediğin bir şey var mı?",
+      messagePlaceholder: "İstersen buraya yazabilirsin (opsiyonel).",
+    },
+    submit: { label: "Başvuruyu Gönder", loading: "Gönderiliyor..." },
+    success: {
+      title: "Teşekkürler.",
+      description: "Başvurunu aldık. İnceledikten sonra seninle iletişime geçeceğiz.",
+      backHome: "Ana Sayfaya Dön",
+    },
+    error: { description: "Formu gönderirken bir sorun oluştu. Lütfen tekrar dene." },
+  },
   assessment: {
     intro: {
       eyebrow: "Kişisel Yol Haritası",
