@@ -20,6 +20,8 @@ export default function FaqPage() {
     })),
   };
 
+  const categories = Array.from(new Set(t.items.map((item) => item.category)));
+
   return (
     <div className="py-16 sm:py-20">
       <script
@@ -29,18 +31,27 @@ export default function FaqPage() {
       <Container className="max-w-3xl">
         <h1 className="text-balance font-display text-4xl font-semibold sm:text-5xl">{t.title}</h1>
         <p className="mt-4 text-lg text-muted">{t.intro}</p>
+      </Container>
 
-        <div className="mt-10 flex flex-col divide-y divide-line border-y border-line">
-          {t.items.map((item) => (
-            <details key={item.question} className="group py-5">
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-display text-lg font-medium">
-                {item.question}
-                <span className="shrink-0 text-muted transition-transform group-open:rotate-45">+</span>
-              </summary>
-              <p className="mt-3 text-muted">{item.answer}</p>
-            </details>
-          ))}
-        </div>
+      <Container className="mt-14 max-w-3xl flex flex-col gap-12">
+        {categories.map((category) => (
+          <div key={category}>
+            <p className="font-mono text-xs uppercase tracking-[0.1em] text-gold">{category}</p>
+            <div className="mt-4 flex flex-col divide-y divide-line border-y border-line">
+              {t.items
+                .filter((item) => item.category === category)
+                .map((item) => (
+                  <details key={item.question} className="group py-5">
+                    <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-display text-lg font-medium">
+                      {item.question}
+                      <span className="shrink-0 text-muted transition-transform group-open:rotate-45">+</span>
+                    </summary>
+                    <p className="mt-3 text-muted">{item.answer}</p>
+                  </details>
+                ))}
+            </div>
+          </div>
+        ))}
       </Container>
     </div>
   );

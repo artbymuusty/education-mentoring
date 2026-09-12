@@ -377,44 +377,52 @@ export const tr: Dictionary = {
     intro: "Aklındaki soruların bir kısmının cevabı burada olabilir. Bulamazsan, doğrudan sorabilirsin.",
     items: [
       {
+        question: "Nereden başlamam gerektiğini bilmiyorum, yine de iletişime geçebilir miyim?",
+        answer:
+          "Evet. Nereden başlayacağını bilmiyor olman bizimle konuşman için bir engel değil.",
+        category: "Genel",
+      },
+      {
         question: "Almanya'da üniversite ücretsiz mi?",
         answer:
           "Çoğu devlet üniversitesinde okul harcı yok, ancak dönemlik bir katkı payı (Semesterbeitrag) genelde bulunuyor. Tam tutar üniversiteye ve eyalete göre değişiyor, durumuna göre birlikte netleştirebiliriz.",
+        category: "Maliyet",
       },
       {
         question: "Hangi seviyede Almanca gerekir?",
         answer:
           "Almanca öğretim yapan programlarda genelde B2–C1 seviyesi isteniyor; İngilizce öğretim yapan programlarda dil şartı farklı olabiliyor. Hangi seviyede olduğunu paylaşırsan hangi yolların açık olduğunu birlikte değerlendiririz.",
-      },
-      {
-        question: "YKS gerekiyor mu?",
-        answer:
-          "Bu, hangi programa ve hangi yolla başvuracağına göre değişiyor. Bazı yollarda gerekmiyor, bazılarında akademik geçmişin farklı şekilde değerlendiriliyor. Durumunu konuşarak netleştirelim.",
+        category: "Almanya'da Eğitim",
       },
       {
         question: "Hangi bölümleri okuyabilirim?",
         answer:
           "Akademik geçmişine ve ilgi alanına bağlı olarak birçok bölüm mümkün olabilir. Kesin bir liste vermek yerine, durumunu birlikte değerlendirip gerçekçi seçenekleri konuşmayı tercih ediyoruz.",
+        category: "Almanya'da Eğitim",
+      },
+      {
+        question: "YKS gerekiyor mu?",
+        answer:
+          "Bu, hangi programa ve hangi yolla başvuracağına göre değişiyor. Bazı yollarda gerekmiyor, bazılarında akademik geçmişin farklı şekilde değerlendiriliyor. Durumunu konuşarak netleştirelim.",
+        category: "Başvuru & Vize Süreci",
       },
       {
         question: "Başvuru ne kadar sürer?",
         answer:
           "Üniversiteye ve programa göre değişiyor; bazı süreçler birkaç hafta, bazıları birkaç ay sürebiliyor. Hedef program netleştikçe sana özel bir zaman çizelgesi çıkarabiliriz.",
+        category: "Başvuru & Vize Süreci",
       },
       {
         question: "Vize konusunda yardımcı oluyor musunuz?",
         answer:
           "Evet. Belge hazırlığı, randevu takibi ve süreç boyunca ortaya çıkan sorular konusunda yanındayız; vize kararının kendisi ilgili konsolosluğun yetkisinde olduğu için bunu garanti edemeyiz.",
+        category: "Başvuru & Vize Süreci",
       },
       {
         question: "Almanya'ya gittikten sonra destek devam ediyor mu?",
         answer:
           "Evet. Kayıt işlemleri, ilk haftalar ve eğitim sürecinde ihtiyaç duyduğun konularda iletişimde kalabiliyoruz.",
-      },
-      {
-        question: "Nereden başlamam gerektiğini bilmiyorum, yine de iletişime geçebilir miyim?",
-        answer:
-          "Evet. Nereden başlayacağını bilmiyor olman bizimle konuşman için bir engel değil.",
+        category: "Mentorluk & Destek",
       },
     ],
   },
