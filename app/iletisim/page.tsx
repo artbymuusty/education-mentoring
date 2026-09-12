@@ -2,9 +2,8 @@ import type { Metadata } from "next";
 import { getDictionary } from "@/lib/content";
 import { getSiteSettings, whatsappLinkFor } from "@/lib/site-settings";
 import { Button } from "@/components/ui/Button";
-import { Card } from "@/components/ui/Card";
 import { Container } from "@/components/ui/Container";
-import { cn } from "@/lib/cn";
+import { EditorialPhoto } from "@/components/ui/EditorialPhoto";
 
 export function generateMetadata(): Metadata {
   const t = getDictionary().contact;
@@ -27,33 +26,40 @@ export default async function ContactPage() {
 
   return (
     <div className="py-16 sm:py-20">
-      <Container className="max-w-3xl">
-        <h1 className="text-balance font-display text-4xl font-semibold sm:text-5xl">{t.title}</h1>
-        <p className="mt-4 text-lg text-muted">{t.intro}</p>
-      </Container>
+      <Container className="grid grid-cols-1 gap-10 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
+        <div>
+          <h1 className="text-balance font-display text-4xl font-semibold sm:text-5xl">{t.title}</h1>
+          <p className="mt-4 text-lg text-muted">{t.intro}</p>
 
-      {channels.length > 0 ? (
-        <Container
-          className={cn("mt-12 grid grid-cols-1 gap-4", channels.length > 1 && "sm:grid-cols-2")}
-        >
-          {channels.map((channel) => (
-            <Card key={channel.key}>
-              <h2 className="font-display text-lg font-semibold">{channel.title}</h2>
-              <p className="mt-2 text-sm text-muted">{channel.description}</p>
-              <Button href={channel.href} variant="secondary" className="mt-5 !px-4 !py-2.5 text-sm">
-                {channel.cta}
-              </Button>
-            </Card>
-          ))}
-        </Container>
-      ) : null}
+          {channels.length > 0 ? (
+            <div className="mt-10 flex flex-col gap-6">
+              {channels.map((channel) => (
+                <div key={channel.key} className="border-t border-line pt-6 first:border-t-0 first:pt-0">
+                  <h2 className="font-display text-lg font-semibold">{channel.title}</h2>
+                  <p className="mt-2 text-sm text-muted">{channel.description}</p>
+                  <Button href={channel.href} variant="secondary" className="mt-4 !px-4 !py-2.5 text-sm">
+                    {channel.cta}
+                  </Button>
+                </div>
+              ))}
+            </div>
+          ) : null}
 
-      <Container className="mt-8 max-w-3xl rounded-[3px] border border-accent bg-paper-raised p-8">
-        <h2 className="font-display text-xl font-semibold">{t.formCta.title}</h2>
-        <p className="mt-2 text-muted">{t.formCta.description}</p>
-        <Button href="/basvuru" className="mt-5">
-          {t.formCta.cta}
-        </Button>
+          <div className="mt-10 rounded-[3px] border border-accent bg-paper-raised p-6 sm:p-8">
+            <h2 className="font-display text-xl font-semibold">{t.formCta.title}</h2>
+            <p className="mt-2 text-muted">{t.formCta.description}</p>
+            <Button href="/basvuru" className="mt-5">
+              {t.formCta.cta}
+            </Button>
+          </div>
+        </div>
+
+        <div className="relative hidden lg:block">
+          <EditorialPhoto alt="Bir görüşme başlıyor" ratio="4 / 5" sizes="35vw" />
+          <span className="pointer-events-none absolute bottom-4 left-4 rounded-full border border-line bg-paper/90 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.08em] text-ink">
+            Bir görüşme başlıyor
+          </span>
+        </div>
       </Container>
     </div>
   );

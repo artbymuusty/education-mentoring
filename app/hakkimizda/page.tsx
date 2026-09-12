@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { getDictionary } from "@/lib/content";
 import { Container } from "@/components/ui/Container";
+import { EditorialPhoto } from "@/components/ui/EditorialPhoto";
 
 export function generateMetadata(): Metadata {
   const t = getDictionary().about;
@@ -13,30 +13,20 @@ export default function AboutPage() {
 
   return (
     <div className="py-16 sm:py-20">
-      <Container className="max-w-3xl">
-        <h1 className="text-balance font-display text-4xl font-semibold sm:text-5xl">{t.title}</h1>
-        <p className="mt-4 font-display text-xl italic text-muted">{t.intro}</p>
+      <Container className="grid grid-cols-1 items-center gap-10 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
+        <div>
+          <h1 className="text-balance font-display text-4xl font-semibold sm:text-5xl">{t.title}</h1>
+          <p className="mt-4 font-display text-xl italic text-muted">{t.intro}</p>
+        </div>
+        <EditorialPhoto src={t.imageSrc} alt={t.imageAlt ?? t.title} ratio="4 / 5" sizes="(min-width: 1024px) 40vw, 100vw" />
       </Container>
 
-      {t.imageSrc ? (
-        <Container className="mt-10 max-w-3xl">
-          <div className="overflow-hidden rounded-[3px] border border-line">
-            <Image
-              src={t.imageSrc}
-              alt={t.imageAlt ?? ""}
-              width={1200}
-              height={720}
-              className="h-auto w-full object-cover"
-            />
-          </div>
-        </Container>
-      ) : null}
-
-      <Container className="mt-14 max-w-3xl">
+      <Container className="mt-16 max-w-3xl">
         <div className="flex flex-col gap-10">
-          {t.sections.map((section) => (
+          {t.sections.map((section, index) => (
             <div key={section.heading} className="border-t border-line pt-8 first:border-t-0 first:pt-0">
-              <h2 className="font-display text-xl font-semibold">{section.heading}</h2>
+              <span className="font-mono text-xs text-gold">{String(index + 1).padStart(2, "0")}</span>
+              <h2 className="mt-2 font-display text-xl font-semibold">{section.heading}</h2>
               <p className="mt-3 text-muted">{section.body}</p>
             </div>
           ))}
