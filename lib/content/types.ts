@@ -104,10 +104,13 @@ export interface Dictionary {
     home: string;
     services: string;
     mentorship: string;
+    studentStories: string;
     about: string;
     pricing: string;
+    joinUs: string;
     faq: string;
     contact: string;
+    more: string;
     ctaPrimary: string;
   };
   home: {

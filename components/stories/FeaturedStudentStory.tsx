@@ -1,10 +1,26 @@
 import type { StudentStory } from "@/lib/content/types";
 import { EditorialPhoto } from "@/components/ui/EditorialPhoto";
+import { cn } from "@/lib/cn";
 
-export function FeaturedStudentStory({ story, isDemo = false }: { story: StudentStory; isDemo?: boolean }) {
+export function FeaturedStudentStory({
+  story,
+  isDemo = false,
+  reverse = false,
+  label = "Öne Çıkan Hikâye",
+}: {
+  story: StudentStory;
+  isDemo?: boolean;
+  reverse?: boolean;
+  label?: string;
+}) {
   return (
-    <div className="grid grid-cols-1 gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-center lg:gap-14">
-      <div className="relative">
+    <div
+      className={cn(
+        "grid grid-cols-1 gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-center lg:gap-14",
+        reverse && "lg:grid-cols-[1.15fr_0.85fr]",
+      )}
+    >
+      <div className={cn("relative", reverse && "lg:order-2")}>
         <EditorialPhoto
           src={story.photoSrc}
           alt={`${story.name}, ${story.university}`}
@@ -22,8 +38,8 @@ export function FeaturedStudentStory({ story, isDemo = false }: { story: Student
         </span>
       </div>
 
-      <div>
-        <p className="font-mono text-xs uppercase tracking-[0.1em] text-gold">Öne Çıkan Hikâye</p>
+      <div className={reverse ? "lg:order-1" : undefined}>
+        <p className="font-mono text-xs uppercase tracking-[0.1em] text-gold">{label}</p>
         <p className="mt-4 text-balance font-display text-2xl italic leading-snug text-ink sm:text-3xl">
           &ldquo;{story.quote}&rdquo;
         </p>

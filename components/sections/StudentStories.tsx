@@ -5,6 +5,7 @@ import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { FeaturedStudentStory } from "@/components/stories/FeaturedStudentStory";
 import { StudentStoryCarousel } from "@/components/stories/StudentStoryCarousel";
+import { Button } from "@/components/ui/Button";
 
 export function StudentStories() {
   const isDemo = studentStories.length === 0 && demoContentEnabled;
@@ -29,6 +30,12 @@ export function StudentStories() {
             <StudentStoryCarousel stories={rest} isDemo={isDemo} />
           </div>
         ) : null}
+
+        <div className="mt-10">
+          <Button href="/ogrenci-hikayeleri" variant="ghost">
+            Tüm Hikâyeleri Gör →
+          </Button>
+        </div>
       </Container>
     </section>
   );

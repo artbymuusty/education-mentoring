@@ -13,10 +13,13 @@ export const tr: Dictionary = {
     home: "Ana Sayfa",
     services: "Nasıl Yardımcı Oluyoruz?",
     mentorship: "Mentorluk",
+    studentStories: "Öğrenci Hikâyeleri",
     about: "Hakkımızda",
     pricing: "Fiyatlar",
+    joinUs: "Bize Katılın",
     faq: "Sık Sorulanlar",
     contact: "İletişim",
+    more: "Daha Fazla",
     ctaPrimary: "Yolculuğunu Konuşalım",
   },
   home: {

@@ -5,6 +5,7 @@ const routes = [
   "",
   "/nasil-yardimci-oluyoruz",
   "/mentorluk",
+  "/ogrenci-hikayeleri",
   "/hakkimizda",
   "/fiyatlar",
   "/sss",
