@@ -6,7 +6,7 @@ import { HowWeWork } from "@/components/sections/HowWeWork";
 import { VisualStorytelling } from "@/components/sections/VisualStorytelling";
 import { StudentStories } from "@/components/sections/StudentStories";
 import { MentorshipTeaser } from "@/components/sections/MentorshipTeaser";
-import { TrustSection } from "@/components/sections/TrustSection";
+import { HumanConnection } from "@/components/sections/HumanConnection";
 import { JoinUsCta } from "@/components/recruitment/JoinUsCta";
 import { FaqPreview } from "@/components/sections/FaqPreview";
 import { FinalCta } from "@/components/sections/FinalCta";
@@ -22,7 +22,7 @@ export default function Home() {
       <VisualStorytelling />
       <StudentStories />
       <MentorshipTeaser />
-      <TrustSection />
+      <HumanConnection />
       <JoinUsCta />
       <FaqPreview />
       <FinalCta />

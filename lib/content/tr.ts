@@ -139,13 +139,15 @@ export const tr: Dictionary = {
         "Ders programının dışında kalan kısım da önemli: yeni bir şehre alışmak, ilk haftanın belirsizliği, zamanla oturan bir rutin. Gerçek öğrenci fotoğrafları geldikçe bu bölüm büyüyecek.",
       captions: ["München", "Hamburg", "Birlikte planlıyoruz"],
     },
-    trust: {
-      title: "Bir insanla konuşabilirsin.",
-      body: [
-        "Burada sana bir şey satmaya çalışmıyoruz. Önce durumunu anlamaya çalışıyoruz.",
-        "Sana uygun olmayan bir yolu 'uygun' gibi göstermeyiz. Bu konuda dürüst olmak boş vaatlerden daha değerli.",
-        "İletişim kurmak kolay: bir form doldur ya da doğrudan WhatsApp'tan yaz.",
-      ],
+    humanConnection: {
+      eyebrow: "Birlikte Başlayalım",
+      metadata: "İlk Adım",
+      title: "Önce nerede olduğunu anlayalım.",
+      description:
+        "Sana bir şey satmaya çalışmıyoruz; önce durumunu dinliyor, sana uygun olmayan bir yolu 'uygun' gibi göstermeden dürüstçe yol gösteriyoruz.",
+      cta: "Yolculuğunu Konuşalım",
+      imageSrc: "/images/cities/frankfurt.jpg",
+      imageAlt: "Frankfurt, Almanya",
     },
     faqPreview: {
       title: "Sık sorulanlar",

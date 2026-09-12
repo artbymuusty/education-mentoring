@@ -154,12 +154,14 @@ export interface Dictionary {
       description: string;
       captions: [string, string, string];
     };
-    trust: {
+    humanConnection: {
+      eyebrow: string;
+      metadata: string;
       title: string;
-      body: string[];
-      /** Optional real photo — omitted, not stock art, until one exists. */
-      imageSrc?: string;
-      imageAlt?: string;
+      description: string;
+      cta: string;
+      imageSrc: string;
+      imageAlt: string;
     };
     faqPreview: {
       title: string;
