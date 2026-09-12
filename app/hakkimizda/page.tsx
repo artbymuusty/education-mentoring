@@ -18,7 +18,12 @@ export default function AboutPage() {
           <h1 className="text-balance font-display text-4xl font-semibold sm:text-5xl">{t.title}</h1>
           <p className="mt-4 font-display text-xl italic text-muted">{t.intro}</p>
         </div>
-        <EditorialPhoto src={t.imageSrc} alt={t.imageAlt ?? t.title} ratio="4 / 5" sizes="(min-width: 1024px) 40vw, 100vw" />
+        <EditorialPhoto
+          src={t.imageSrc ?? "/images/cities/cologne.jpg"}
+          alt={t.imageAlt ?? "Köln, Almanya"}
+          ratio="4 / 5"
+          sizes="(min-width: 1024px) 40vw, 100vw"
+        />
       </Container>
 
       <Container className="mt-16 max-w-3xl">

@@ -20,20 +20,20 @@ export function VisualStorytelling() {
 
         <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-5">
           <div className="relative sm:col-span-3">
-            <EditorialPhoto alt={t.captions[0]} ratio="3 / 4" src={undefined} />
+            <EditorialPhoto alt={t.captions[0]} ratio="3 / 4" src="/images/cities/munich.jpg" />
             <span className="pointer-events-none absolute bottom-3 left-3 rounded-full border border-line bg-paper/90 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.08em] text-ink">
               {t.captions[0]}
             </span>
           </div>
           <div className="flex flex-col gap-4 sm:col-span-2">
             <div className="relative">
-              <EditorialPhoto alt={t.captions[1]} ratio="1 / 1" src={undefined} />
+              <EditorialPhoto alt={t.captions[1]} ratio="1 / 1" src="/images/cities/hamburg.jpg" />
               <span className="pointer-events-none absolute bottom-3 left-3 rounded-full border border-line bg-paper/90 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.08em] text-ink">
                 {t.captions[1]}
               </span>
             </div>
             <div className="relative">
-              <EditorialPhoto alt={t.captions[2]} ratio="16 / 10" src={undefined} />
+              <EditorialPhoto alt={t.captions[2]} ratio="16 / 10" src="/images/germany/planning-notebook.jpg" />
               <span className="pointer-events-none absolute bottom-3 left-3 rounded-full border border-line bg-paper/90 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.08em] text-ink">
                 {t.captions[2]}
               </span>

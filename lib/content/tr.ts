@@ -31,6 +31,12 @@ export const tr: Dictionary = {
       ctaPrimary: "Yolculuğunu Konuşalım",
       ctaSecondary: "Nasıl Yardımcı Olduğumuzu Anlat",
     },
+    journey: {
+      eyebrow: "Yolculuk",
+      title: "İstanbul'dan Almanya'ya, adım adım.",
+      description:
+        "Berlin, München, Hamburg ve Frankfurt — hedefin hangisi olursa olsun, yol haritasını birlikte çıkarıyoruz. Bu rota tek bir uçuş değil, birçok küçük kararın toplamı.",
+    },
     stageSelector: {
       title: "Şu anda nerede olursan ol.",
       subtitle: "Aşağıdakilerden sana en yakın olanı seç, sana uygun cevabı hemen görelim.",
@@ -130,8 +136,8 @@ export const tr: Dictionary = {
       eyebrow: "Günlük Hayat",
       title: "Almanya'da hayat, başvurudan ibaret değil.",
       description:
-        "Ders programının dışında kalan kısım da önemli: yeni bir şehre alışmak, ilk haftanın belirsizliği, zamanla oturan bir rutin. Bu bölüm, gerçek öğrenci fotoğrafları geldikçe büyüyecek.",
-      captions: ["İlk ders, ilk hafta", "Kütüphanede bir öğleden sonra", "Bir mentorluk görüşmesi"],
+        "Ders programının dışında kalan kısım da önemli: yeni bir şehre alışmak, ilk haftanın belirsizliği, zamanla oturan bir rutin. Gerçek öğrenci fotoğrafları geldikçe bu bölüm büyüyecek.",
+      captions: ["München", "Hamburg", "Birlikte planlıyoruz"],
     },
     trust: {
       title: "Bir insanla konuşabilirsin.",

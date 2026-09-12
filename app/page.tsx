@@ -1,11 +1,12 @@
 import { Hero } from "@/components/sections/Hero";
 import { StageSelector } from "@/components/sections/StageSelector";
+import { Journey } from "@/components/sections/Journey";
 import { ServicesOverview } from "@/components/sections/ServicesOverview";
 import { HowWeWork } from "@/components/sections/HowWeWork";
 import { VisualStorytelling } from "@/components/sections/VisualStorytelling";
+import { StudentStories } from "@/components/sections/StudentStories";
 import { MentorshipTeaser } from "@/components/sections/MentorshipTeaser";
 import { TrustSection } from "@/components/sections/TrustSection";
-import { StudentStories } from "@/components/sections/StudentStories";
 import { JoinUsCta } from "@/components/recruitment/JoinUsCta";
 import { FaqPreview } from "@/components/sections/FaqPreview";
 import { FinalCta } from "@/components/sections/FinalCta";
@@ -15,12 +16,13 @@ export default function Home() {
     <>
       <Hero />
       <StageSelector />
+      <Journey />
       <ServicesOverview />
       <HowWeWork />
       <VisualStorytelling />
+      <StudentStories />
       <MentorshipTeaser />
       <TrustSection />
-      <StudentStories />
       <JoinUsCta />
       <FaqPreview />
       <FinalCta />

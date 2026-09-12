@@ -121,6 +121,11 @@ export interface Dictionary {
       ctaPrimary: string;
       ctaSecondary: string;
     };
+    journey: {
+      eyebrow: string;
+      title: string;
+      description: string;
+    };
     stageSelector: {
       title: string;
       subtitle: string;
