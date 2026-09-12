@@ -55,7 +55,7 @@ export default async function ContactPage() {
         </div>
 
         <div className="relative hidden lg:block">
-          <EditorialPhoto src="/images/cities/frankfurt.jpg" alt="Frankfurt, Almanya" ratio="4 / 5" sizes="35vw" />
+          <EditorialPhoto src="/images/cities/frankfurt.jpg" alt="Frankfurt, Almanya" ratio="4 / 5" sizes="35vw" priority />
           <span className="pointer-events-none absolute bottom-4 left-4 rounded-full border border-line bg-paper/90 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.08em] text-ink">
             Bir görüşme başlıyor
           </span>

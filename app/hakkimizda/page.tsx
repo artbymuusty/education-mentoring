@@ -23,6 +23,7 @@ export default function AboutPage() {
           alt={t.imageAlt ?? "Köln, Almanya"}
           ratio="4 / 5"
           sizes="(min-width: 1024px) 40vw, 100vw"
+          priority
         />
       </Container>
 
