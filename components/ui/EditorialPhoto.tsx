@@ -34,8 +34,15 @@ export function EditorialPhoto({
 }) {
   if (src) {
     return (
-      <div className={cn("relative overflow-hidden rounded-[3px] border border-line", className)} style={{ aspectRatio: ratio }}>
-        <Image src={src} alt={alt} fill sizes={sizes} priority={priority} className="object-cover" />
+      <div className={cn("group relative overflow-hidden rounded-[3px] border border-line", className)} style={{ aspectRatio: ratio }}>
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          sizes={sizes}
+          priority={priority}
+          className="object-cover transition-transform duration-500 ease-out motion-safe:group-hover:scale-[1.03]"
+        />
       </div>
     );
   }

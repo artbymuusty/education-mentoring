@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getDictionary } from "@/lib/content";
 import { Container } from "@/components/ui/Container";
 import { EditorialPhoto } from "@/components/ui/EditorialPhoto";
+import { Reveal } from "@/components/ui/Reveal";
 
 export function generateMetadata(): Metadata {
   const t = getDictionary().about;
@@ -27,14 +28,19 @@ export default function AboutPage() {
         />
       </Container>
 
-      <Container className="mt-16 max-w-3xl">
-        <div className="flex flex-col gap-10">
+      <Container className="mt-16 max-w-2xl">
+        <div className="relative flex flex-col gap-10">
+          <div aria-hidden="true" className="absolute bottom-2 left-5 top-2 w-px bg-line" />
           {t.sections.map((section, index) => (
-            <div key={section.heading} className="border-t border-line pt-8 first:border-t-0 first:pt-0">
-              <span className="font-mono text-xs text-gold">{String(index + 1).padStart(2, "0")}</span>
-              <h2 className="mt-2 font-display text-xl font-semibold">{section.heading}</h2>
-              <p className="mt-3 text-muted">{section.body}</p>
-            </div>
+            <Reveal key={section.heading} delay={index * 0.05} className="relative flex gap-6">
+              <span className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-line bg-paper font-mono text-xs text-gold">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <div className="pt-1.5">
+                <h2 className="font-display text-xl font-semibold sm:text-2xl">{section.heading}</h2>
+                <p className="mt-3 text-muted">{section.body}</p>
+              </div>
+            </Reveal>
           ))}
         </div>
       </Container>

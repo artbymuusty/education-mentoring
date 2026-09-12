@@ -296,20 +296,24 @@ export const tr: Dictionary = {
       "Bu sürecin nasıl hissettirdiğini bilen insanlar tarafından oluşturulan bir sistemiz.",
     sections: [
       {
-        heading: "Neden bu işi yapıyoruz?",
+        heading: "Neden varız?",
         body: "Almanya'da eğitim süreci doğru bilgiyle ilerlediğinde ulaşılabilir bir hedef. Ama dağınık bilgi, belirsiz adımlar ve yalnız ilerleme hissi bu süreci gereğinden zor gösteriyor. Biz bu boşluğu doldurmak için buradayız.",
       },
       {
-        heading: "Bu süreçte neyin eksik olduğunu gördük?",
-        body: "Çoğu kaynak ya çok genel ya da çok teknik. Kullanıcı nerede olduğunu bilmeden bir bilgi yığınıyla karşılaşıyor. Biz önce durumunu anlamayı, sonra doğru bilgiyi doğru zamanda vermeyi önceliklendiriyoruz.",
-      },
-      {
-        heading: "Öğrenciye nasıl yaklaşmak istiyoruz?",
+        heading: "Nasıl yaklaşıyoruz?",
         body: "Yargılamadan. Geç başlamış, notları düşük, dili henüz yeterli değil ya da hedefi belirsiz olabilirsin; bunların hiçbiri konuşmaya başlamak için bir engel değil. Mevcut durumundan ilerleyebileceğin seçenekleri birlikte değerlendiriyoruz.",
       },
       {
-        heading: "Nasıl çalışıyoruz?",
+        heading: "Öğrenci için ne değişiyor?",
+        body: "Çoğu kaynak ya çok genel ya da çok teknik; nerede olduğunu bilmeden bir bilgi yığınıyla karşılaşıyorsun. Biz önce durumunu anlamayı, sonra doğru bilgiyi doğru zamanda vermeyi önceliklendiriyoruz — tek başına elemen gereken bir yığın yerine, senin durumuna konuşulmuş bir yol.",
+      },
+      {
+        heading: "Almanya'da yolculuk nasıl ilerliyor?",
         body: "Önce dinliyoruz, sonra yönlendiriyoruz. Süreç boyunca hangi adımın ne zaman geldiğini takip ediyor, sorularına zamanında cevap veriyoruz. Söz verirken gerçekçi kalıyoruz; uygun olmayan bir yolu 'uygun' gibi göstermiyoruz.",
+      },
+      {
+        heading: "Bundan sonra?",
+        body: "Bu platform büyüdükçe gerçek öğrenci hikâyeleri ve gerçek mentor profilleriyle zenginleşecek. Şu an önceliğimiz aynı kalıyor: her görüşmede aynı dikkat ve dürüstlükle yanında olmak — sayı büyüse de yaklaşımımız değişmeyecek.",
       },
     ],
   },

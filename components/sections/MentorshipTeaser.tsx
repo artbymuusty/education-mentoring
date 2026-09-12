@@ -5,6 +5,7 @@ import { demoContentEnabled } from "@/lib/content/demo";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { EditorialPhoto } from "@/components/ui/EditorialPhoto";
+import { Reveal } from "@/components/ui/Reveal";
 
 export function MentorshipTeaser() {
   const t = getDictionary().home.mentorship;
@@ -14,7 +15,7 @@ export function MentorshipTeaser() {
   return (
     <section className="border-b border-line py-16 sm:py-20">
       <Container className="grid gap-10 lg:grid-cols-[1fr_0.8fr] lg:items-center">
-        <div>
+        <Reveal>
           <h2 className="text-balance font-display text-3xl font-semibold sm:text-4xl">{t.title}</h2>
           <p className="mt-4 max-w-lg text-muted">{t.description}</p>
           <div className="mt-6">
@@ -22,7 +23,7 @@ export function MentorshipTeaser() {
               {t.cta}
             </Button>
           </div>
-        </div>
+        </Reveal>
 
         {featured ? (
           <div className="relative">

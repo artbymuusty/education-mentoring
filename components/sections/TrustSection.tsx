@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { getDictionary } from "@/lib/content";
 import { Container } from "@/components/ui/Container";
+import { Reveal } from "@/components/ui/Reveal";
 import { cn } from "@/lib/cn";
 
 export function TrustSection() {
@@ -11,7 +12,7 @@ export function TrustSection() {
       <Container
         className={cn("max-w-3xl", t.imageSrc && "grid max-w-none gap-10 lg:grid-cols-[1fr_1.1fr] lg:items-center")}
       >
-        <div>
+        <Reveal>
           <h2 className="text-balance font-display text-3xl font-semibold sm:text-4xl">{t.title}</h2>
           <div className="mt-6 flex flex-col gap-4">
             {t.body.map((paragraph) => (
@@ -20,7 +21,7 @@ export function TrustSection() {
               </p>
             ))}
           </div>
-        </div>
+        </Reveal>
         {t.imageSrc ? (
           <div className="overflow-hidden rounded-[3px] border border-line">
             <Image

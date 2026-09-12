@@ -4,6 +4,7 @@ import { useState } from "react";
 import { getDictionary } from "@/lib/content";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
+import { Reveal } from "@/components/ui/Reveal";
 import { cn } from "@/lib/cn";
 
 export function StageSelector() {
@@ -16,8 +17,10 @@ export function StageSelector() {
   return (
     <section className="border-b border-line bg-paper-raised py-16 sm:py-20">
       <Container>
-        <h2 className="text-balance font-display text-3xl font-semibold sm:text-4xl">{t.title}</h2>
-        <p className="mt-2 max-w-xl text-muted">{t.subtitle}</p>
+        <Reveal>
+          <h2 className="text-balance font-display text-3xl font-semibold sm:text-4xl">{t.title}</h2>
+          <p className="mt-2 max-w-xl text-muted">{t.subtitle}</p>
+        </Reveal>
 
         <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4" role="radiogroup" aria-label={t.title}>
           {allStages.map((stage) => {
