@@ -42,11 +42,17 @@ export default function FaqPage() {
                 .filter((item) => item.category === category)
                 .map((item) => (
                   <details key={item.question} className="group py-5">
-                    <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-display text-lg font-medium">
+                    <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-display text-lg font-medium transition-colors hover:text-accent">
                       {item.question}
-                      <span className="shrink-0 text-muted transition-transform group-open:rotate-45">+</span>
+                      <span className="shrink-0 text-muted transition-transform duration-200 group-open:rotate-45 group-open:text-accent">
+                        +
+                      </span>
                     </summary>
-                    <p className="mt-3 text-muted">{item.answer}</p>
+                    <div className="grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-out group-open:grid-rows-[1fr]">
+                      <div className="overflow-hidden">
+                        <p className="mt-3 text-muted">{item.answer}</p>
+                      </div>
+                    </div>
                   </details>
                 ))}
             </div>

@@ -35,7 +35,7 @@ export function NavLink({
       onClick={onClick}
       aria-current={isActive ? "page" : undefined}
       className={cn(
-        "text-sm font-medium transition-colors hover:text-accent",
+        "text-sm font-medium transition-colors hover:text-accent active:opacity-60",
         underline && "underline-offset-4 hover:underline",
         isActive ? "text-accent" : "text-ink",
         className,

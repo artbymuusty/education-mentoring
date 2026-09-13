@@ -28,7 +28,7 @@ export function Header() {
       <Container className="flex items-center justify-between py-4">
         <Link
           href="/"
-          className="font-display text-xl font-semibold text-ink transition-colors hover:text-accent"
+          className="font-display text-xl font-semibold text-ink transition-colors hover:text-accent active:opacity-60"
         >
           {siteConfig.name}
         </Link>
@@ -44,7 +44,7 @@ export function Header() {
             <button
               type="button"
               aria-haspopup="true"
-              className="flex items-center gap-1.5 text-sm font-medium text-ink transition-colors hover:text-accent"
+              className="flex items-center gap-1.5 text-sm font-medium text-ink transition-colors hover:text-accent active:opacity-60"
             >
               {t.nav.more}
               <svg width="9" height="6" viewBox="0 0 9 6" fill="none" aria-hidden="true" className="mt-px">

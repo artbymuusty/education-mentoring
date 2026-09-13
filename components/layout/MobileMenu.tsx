@@ -57,7 +57,7 @@ export function MobileMenu({
         aria-expanded={open}
         aria-label={open ? "Menüyü kapat" : "Menüyü aç"}
         onClick={() => setOpen((v) => !v)}
-        className="flex h-11 min-w-11 items-center justify-center gap-2 rounded-[3px] border border-line px-3 text-sm transition-colors hover:border-accent"
+        className="flex h-11 min-w-11 items-center justify-center gap-2 rounded-[3px] border border-line px-3 text-sm transition-all duration-150 hover:border-accent active:scale-[0.96] motion-reduce:active:scale-100"
       >
         {open ? "Kapat" : "Menü"}
       </button>
