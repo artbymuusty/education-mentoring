@@ -1,6 +1,5 @@
 import { unstable_cache } from "next/cache";
 import { createClient } from "@supabase/supabase-js";
-import { demoContentEnabled } from "@/lib/content/demo";
 import { siteConfig } from "@/lib/site-config";
 import type { Database } from "@/lib/supabase/types";
 
@@ -124,10 +123,20 @@ const EMPTY_SOCIAL_LINKS: SocialLinks = {
 };
 
 /**
+ * Deliberately separate from `demoContentEnabled` (lib/content/demo.ts),
+ * which gates fabricated student/mentor people and must never go true in
+ * production — showing a placeholder person as if real is a much bigger
+ * problem than showing a placeholder link to Instagram's own homepage.
+ * This flag only ever affects the three social icons below, so it can
+ * safely be on in production while demoContentEnabled stays off.
+ */
+const socialLinksDemoEnabled = process.env.NEXT_PUBLIC_SHOW_SOCIAL_LINKS === "true";
+
+/**
  * Real platform homepages — NOT RTG's accounts — shown only when
- * demoContentEnabled is on and only for whichever fields the admin hasn't
- * filled in yet, so the footer feature can be seen and clicked before real
- * accounts exist. Never used when demoContentEnabled is off: a real
+ * socialLinksDemoEnabled is on and only for whichever fields the admin
+ * hasn't filled in yet, so the footer feature can be seen and clicked
+ * before real accounts exist. Never used when the flag is off: a
  * deployment with no admin-entered URL shows no icon at all, per the
  * "never fabricate an RTG account" rule.
  */
@@ -141,7 +150,7 @@ export const SOCIAL_LINKS_TAG = "social-links";
 
 async function fetchSocialLinks(): Promise<SocialLinks> {
   const real = await fetchRealSocialLinks();
-  if (!demoContentEnabled) return real;
+  if (!socialLinksDemoEnabled) return real;
 
   return {
     linkedinUrl: real.linkedinUrl || DEMO_SOCIAL_LINKS.linkedinUrl,
