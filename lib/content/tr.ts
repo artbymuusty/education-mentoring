@@ -136,8 +136,8 @@ export const tr: Dictionary = {
       eyebrow: "Günlük Hayat",
       title: "Almanya'da hayat, başvurudan ibaret değil.",
       description:
-        "Ders programının dışında kalan kısım da önemli: yeni bir şehre alışmak, ilk haftanın belirsizliği, zamanla oturan bir rutin. Gerçek öğrenci fotoğrafları geldikçe bu bölüm büyüyecek.",
-      captions: ["München", "Hamburg", "Birlikte planlıyoruz"],
+        "Bir üniversiteye kabul edilmek yolculuğun önemli bir parçası; asıl hikâye kampüse adım attığında, yeni bir şehirde kendi düzenini kurduğunda başlıyor.",
+      captions: ["Humboldt Üniversitesi", "München", "Bibliotheca Albertina"],
     },
     humanConnection: {
       eyebrow: "Birlikte Başlayalım",

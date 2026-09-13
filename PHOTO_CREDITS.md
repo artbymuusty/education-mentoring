@@ -15,6 +15,8 @@ real person's likeness is attached to a fabricated name or testimonial.
 | `cities/frankfurt.jpg` | Frankfurt skyline, river Main | Norbert Nagel | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Frankfurt_Skyline_with_river_Main_2014.jpg |
 | `cities/cologne.jpg` | Cologne Cathedral & Hohenzollern Bridge | dronepicr (Flickr) | CC BY 2.0 | https://commons.wikimedia.org/wiki/File:K%C3%B6lner_Dom_Hohenzollernbr%C3%BCcke_(30337111332).jpg |
 | `germany/planning-notebook.jpg` | Anonymized planning/writing scene (no face visible) | Shixart1985 | CC BY 2.0 | https://commons.wikimedia.org/wiki/File:Person_writing_in_a_notebook_while_sitting_at_a_desk.jpg |
+| `germany/humboldt-campus.jpg` | Inner courtyard, Humboldt University of Berlin — students on the lawn (candid, distant, not individually identifiable) | Jens Cederskjold | CC BY-SA 2.0 | https://commons.wikimedia.org/wiki/File:Innenhof_Hauptgeb%C3%A4ude_Humboldt-Universit%C3%A4t_zu_Berlin_-_Inner_courtyard_of_the_main_building_of_the_Humboldt_University_of_Berlin_-_50846176236.jpg |
+| `germany/leipzig-library.jpg` | Reading room, Bibliotheca Albertina, Leipzig University | Joachim Köhler | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Leipzig-Bibliotheca-Albertina-gro%C3%9Fer-Lesesaal-S%C3%BCdseite-IMG_6098-8x5B-360x180G-PanoS-22-02-2025.jpg |
 
 ## Rules for adding more
 
