@@ -33,9 +33,9 @@ export const tr: Dictionary = {
     },
     journey: {
       eyebrow: "Yolculuk",
-      title: "İstanbul'dan Almanya'ya, adım adım.",
+      title: "Nerede olursan ol, Almanya'ya giden yolu birlikte çizelim.",
       description:
-        "Berlin, München, Hamburg ve Frankfurt — hedefin hangisi olursa olsun, yol haritasını birlikte çıkarıyoruz. Bu rota tek bir uçuş değil, birçok küçük kararın toplamı.",
+        "Türkiye'nin neresinde olursan ol, Berlin, München, Hamburg ya da Frankfurt — hedefin hangisi olursa olsun bulunduğun yerden başlayabiliriz. Bu rota tek bir uçuş değil, birçok küçük kararın toplamı.",
     },
     stageSelector: {
       title: "Şu anda nerede olursan ol.",
@@ -155,7 +155,8 @@ export const tr: Dictionary = {
     },
     finalCta: {
       title: "Hazırsan konuşalım.",
-      description: "Nerede olduğun önemli değil. Durumunu birlikte anlayalım, sonrasında birlikte ilerleyelim.",
+      description:
+        "Bulunduğun yerden başlayalım. Durumunu birlikte anlayalım, sonrasında sana uygun yolu birlikte çizelim.",
       ctaPrimary: "Yolculuğunu Konuşalım",
       ctaSecondary: "WhatsApp'tan Yaz",
     },

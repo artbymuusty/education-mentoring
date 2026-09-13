@@ -29,7 +29,7 @@ export async function FinalCta() {
       </svg>
 
       <Container className="relative max-w-2xl text-center">
-        <p className="mb-4 font-mono text-xs uppercase tracking-[0.14em] text-gold">İstanbul · Almanya</p>
+        <p className="mb-4 font-mono text-xs uppercase tracking-[0.14em] text-gold">Nereden Olursan Ol · Almanya</p>
         <h2 className="text-balance font-display text-4xl font-semibold sm:text-5xl">{t.title}</h2>
         <p className="mt-4 text-lg text-paper/75">{t.description}</p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">

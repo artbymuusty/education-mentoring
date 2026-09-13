@@ -10,7 +10,18 @@ interface Named {
   label: string;
 }
 
-const ORIGIN: Named = { lat: 41.0082, lng: 28.9784, label: "İstanbul" };
+/**
+ * Representative starting points spread across Turkey — not RTG offices or
+ * local reps, purely a visual counterweight to a single Istanbul dot, so the
+ * map reads as "wherever you are" rather than "Istanbul → Germany."
+ */
+const ORIGINS: Named[] = [
+  { lat: 41.0082, lng: 28.9784, label: "İstanbul" },
+  { lat: 39.9334, lng: 32.8597, label: "Ankara" },
+  { lat: 38.4237, lng: 27.1428, label: "İzmir" },
+  { lat: 36.8969, lng: 30.7133, label: "Antalya" },
+  { lat: 41.0027, lng: 39.7168, label: "Trabzon" },
+];
 
 const DESTINATIONS: Named[] = [
   { lat: 52.52, lng: 13.405, label: "Berlin" },
@@ -38,9 +49,12 @@ export function WorldMap() {
   const play = inView && !reduceMotion;
   const settled = inView && reduceMotion;
 
-  const { dotsDataUri, origin, destinations, width, height } = useMemo(() => {
+  const { dotsDataUri, originPoints, routeOrigin, destinations, width, height } = useMemo(() => {
     const map = new DottedMap({ height: 90, region: REGION, grid: "diagonal" });
-    const originPoint = map.addPin({ lat: ORIGIN.lat, lng: ORIGIN.lng, svgOptions: { color: "transparent", radius: 0 } });
+    const originPins = ORIGINS.map((o) => ({
+      ...o,
+      ...map.addPin({ lat: o.lat, lng: o.lng, svgOptions: { color: "transparent", radius: 0 } }),
+    }));
     const destPoints = DESTINATIONS.map((d) => ({
       ...d,
       ...map.addPin({ lat: d.lat, lng: d.lng, svgOptions: { color: "transparent", radius: 0 } }),
@@ -53,9 +67,15 @@ export function WorldMap() {
       backgroundColor: "transparent",
     });
 
+    const centroid = {
+      x: originPins.reduce((sum, o) => sum + o.x, 0) / originPins.length,
+      y: originPins.reduce((sum, o) => sum + o.y, 0) / originPins.length,
+    };
+
     return {
       dotsDataUri: `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`,
-      origin: originPoint,
+      originPoints: originPins,
+      routeOrigin: centroid,
       destinations: destPoints,
       width: map.image.width,
       height: map.image.height,
@@ -75,7 +95,7 @@ export function WorldMap() {
         {destinations.map((dest, index) => (
           <g key={dest.label}>
             <motion.path
-              d={routePath(origin, dest)}
+              d={routePath(routeOrigin, dest)}
               fill="none"
               stroke="var(--color-accent)"
               strokeWidth={1.1}
@@ -109,14 +129,28 @@ export function WorldMap() {
           </g>
         ))}
 
-        <circle cx={origin.x} cy={origin.y} r={3} fill="var(--color-ink)" />
+        {originPoints.map((origin, index) => (
+          <motion.circle
+            key={origin.label}
+            cx={origin.x}
+            cy={origin.y}
+            r={2}
+            fill="var(--color-ink)"
+            initial={{ opacity: 0 }}
+            animate={play || settled ? { opacity: 1 } : {}}
+            transition={play ? { duration: 0.5, delay: index * 0.08 } : { duration: 0 }}
+          />
+        ))}
       </svg>
 
       <span
         className="pointer-events-none absolute -translate-x-1/2 -translate-y-full rounded-full border border-line bg-paper/90 px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.08em] text-ink"
-        style={{ left: `${(origin.x / width) * 100}%`, top: `${(origin.y / height) * 100 - 3}%` }}
+        style={{
+          left: `${(routeOrigin.x / width) * 100}%`,
+          top: `${(Math.min(...originPoints.map((o) => o.y)) / height) * 100 - 3}%`,
+        }}
       >
-        {ORIGIN.label}
+        Türkiye
       </span>
       <span
         className="pointer-events-none absolute -translate-x-1/2 translate-y-2 rounded-full border border-line bg-paper/90 px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.08em] text-ink"

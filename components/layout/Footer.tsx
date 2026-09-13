@@ -85,7 +85,7 @@ export async function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={s.label}
-                  className="text-muted transition-colors hover:text-accent"
+                  className="text-muted transition-all duration-200 hover:-translate-y-0.5 hover:text-accent motion-reduce:hover:translate-y-0"
                 >
                   <SocialIcon platform={s.platform} className="h-4 w-4" />
                 </a>
