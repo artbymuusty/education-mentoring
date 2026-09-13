@@ -1,5 +1,6 @@
 import { unstable_cache } from "next/cache";
 import { createClient } from "@supabase/supabase-js";
+import { demoContentEnabled } from "@/lib/content/demo";
 import { siteConfig } from "@/lib/site-config";
 import type { Database } from "@/lib/supabase/types";
 
@@ -100,23 +101,61 @@ export function resolveSiteUrl(settings: Pick<SiteSettings, "productionDomain">)
  * Social links (LinkedIn/Instagram/X), backed by the social_links
  * singleton (0004_social_links.sql) and editable from /admin/settings.
  * Same empty-string-means-unset convention as SiteSettings — a missing
- * URL must never become a broken/fake link in the footer.
+ * real URL must never become a fabricated RTG link in the footer.
+ *
+ * `demo` marks which fields, if any, are the demo fallback below rather
+ * than a real admin-entered URL — callers use it to disclose that in the
+ * accessible name (see Footer), never to hide the distinction.
  */
 export interface SocialLinks {
   linkedinUrl: string;
   instagramUrl: string;
   xUrl: string;
+  demo: { linkedin: boolean; instagram: boolean; x: boolean };
 }
+
+const NO_DEMO = { linkedin: false, instagram: false, x: false };
 
 const EMPTY_SOCIAL_LINKS: SocialLinks = {
   linkedinUrl: "",
   instagramUrl: "",
   xUrl: "",
+  demo: NO_DEMO,
+};
+
+/**
+ * Real platform homepages — NOT RTG's accounts — shown only when
+ * demoContentEnabled is on and only for whichever fields the admin hasn't
+ * filled in yet, so the footer feature can be seen and clicked before real
+ * accounts exist. Never used when demoContentEnabled is off: a real
+ * deployment with no admin-entered URL shows no icon at all, per the
+ * "never fabricate an RTG account" rule.
+ */
+const DEMO_SOCIAL_LINKS = {
+  linkedinUrl: "https://linkedin.com",
+  instagramUrl: "https://instagram.com",
+  xUrl: "https://x.com",
 };
 
 export const SOCIAL_LINKS_TAG = "social-links";
 
 async function fetchSocialLinks(): Promise<SocialLinks> {
+  const real = await fetchRealSocialLinks();
+  if (!demoContentEnabled) return real;
+
+  return {
+    linkedinUrl: real.linkedinUrl || DEMO_SOCIAL_LINKS.linkedinUrl,
+    instagramUrl: real.instagramUrl || DEMO_SOCIAL_LINKS.instagramUrl,
+    xUrl: real.xUrl || DEMO_SOCIAL_LINKS.xUrl,
+    demo: {
+      linkedin: !real.linkedinUrl,
+      instagram: !real.instagramUrl,
+      x: !real.xUrl,
+    },
+  };
+}
+
+async function fetchRealSocialLinks(): Promise<SocialLinks> {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
   if (!url || !anonKey) return EMPTY_SOCIAL_LINKS;
@@ -130,9 +169,10 @@ async function fetchSocialLinks(): Promise<SocialLinks> {
     linkedinUrl: data.linkedin_url ?? "",
     instagramUrl: data.instagram_url ?? "",
     xUrl: data.x_url ?? "",
+    demo: NO_DEMO,
   };
 }
 
-export const getSocialLinks = unstable_cache(fetchSocialLinks, ["social-links-v1"], {
+export const getSocialLinks = unstable_cache(fetchSocialLinks, ["social-links-v2"], {
   tags: [SOCIAL_LINKS_TAG],
 });

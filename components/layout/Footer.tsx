@@ -22,9 +22,15 @@ export async function Footer() {
   ];
 
   const socialLinks = [
-    social.linkedinUrl ? { platform: "linkedin" as const, href: social.linkedinUrl, label: "LinkedIn" } : null,
-    social.instagramUrl ? { platform: "instagram" as const, href: social.instagramUrl, label: "Instagram" } : null,
-    social.xUrl ? { platform: "x" as const, href: social.xUrl, label: "X" } : null,
+    social.linkedinUrl
+      ? { platform: "linkedin" as const, href: social.linkedinUrl, label: social.demo.linkedin ? "LinkedIn (örnek hesap)" : "LinkedIn" }
+      : null,
+    social.instagramUrl
+      ? { platform: "instagram" as const, href: social.instagramUrl, label: social.demo.instagram ? "Instagram (örnek hesap)" : "Instagram" }
+      : null,
+    social.xUrl
+      ? { platform: "x" as const, href: social.xUrl, label: social.demo.x ? "X (örnek hesap)" : "X" }
+      : null,
   ].filter((s): s is NonNullable<typeof s> => s !== null);
 
   return (
@@ -85,6 +91,7 @@ export async function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={s.label}
+                  title={s.label}
                   className="flex h-11 w-11 items-center justify-center rounded-full border border-line text-muted transition-all duration-200 ease-out hover:-translate-y-0.5 hover:border-accent hover:bg-accent/8 hover:text-accent active:translate-y-0 active:scale-95 active:bg-accent/12 motion-reduce:hover:translate-y-0 motion-reduce:active:scale-100"
                 >
                   <SocialIcon platform={s.platform} className="h-[18px] w-[18px]" />

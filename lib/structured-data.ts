@@ -7,7 +7,13 @@ import type { SiteSettings, SocialLinks } from "@/lib/site-settings";
  * profile that doesn't exist yet.
  */
 export function getOrganizationJsonLd(settings: SiteSettings, social: SocialLinks, resolvedUrl: string) {
-  const sameAs = [social.linkedinUrl, social.instagramUrl, social.xUrl].filter(Boolean);
+  // Demo-fallback URLs (see getSocialLinks) are real platform homepages, not
+  // RTG's accounts — they must never enter search-engine-facing sameAs data.
+  const sameAs = [
+    social.demo.linkedin ? null : social.linkedinUrl,
+    social.demo.instagram ? null : social.instagramUrl,
+    social.demo.x ? null : social.xUrl,
+  ].filter(Boolean);
 
   return {
     "@context": "https://schema.org",
