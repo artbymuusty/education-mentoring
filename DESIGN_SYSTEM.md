@@ -4,6 +4,13 @@ This documents the system as it actually exists in code. If this file and
 the code disagree, the code is right — update this file, don't "fix" the
 code to match a stale doc. Source of truth for tokens: `app/globals.css`.
 
+**This is the source of truth for implemented UI decisions.**
+`design-system/rtg-danismanlik/MASTER.md` is a separate, unedited record of
+what the `ui-ux-pro-max` skill's generic design-intelligence engine
+recommends for this product category — it is a reference for comparison,
+not a spec RTG follows. See that file's own header for the specific points
+where RTG's real system (below) deliberately diverges and why.
+
 ## 1. Brand
 
 Warm, human, calm, experienced, European, trustworthy. Not a bank, not a

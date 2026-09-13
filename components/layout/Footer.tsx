@@ -77,7 +77,7 @@ export async function Footer() {
         <Container className="flex flex-wrap items-center justify-between gap-4">
           <p className="font-mono text-xs text-muted">{t.footer.rights}</p>
           {socialLinks.length > 0 ? (
-            <div className="flex items-center gap-4">
+            <div className="-mr-3 flex items-center" aria-label="Sosyal medya bağlantıları">
               {socialLinks.map((s) => (
                 <a
                   key={s.platform}
@@ -85,7 +85,7 @@ export async function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={s.label}
-                  className="text-muted transition-all duration-200 hover:-translate-y-0.5 hover:text-accent motion-reduce:hover:translate-y-0"
+                  className="flex h-11 w-11 items-center justify-center text-muted transition-all duration-200 hover:-translate-y-0.5 hover:text-accent motion-reduce:hover:translate-y-0"
                 >
                   <SocialIcon platform={s.platform} className="h-4 w-4" />
                 </a>

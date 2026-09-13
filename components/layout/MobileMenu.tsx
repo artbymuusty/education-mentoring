@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import { Button } from "@/components/ui/Button";
+import { NavLink } from "@/components/layout/NavLink";
 import { cn } from "@/lib/cn";
 
 interface NavLinkItem {
@@ -28,7 +28,7 @@ export function MobileMenu({
         aria-expanded={open}
         aria-label={open ? "Menüyü kapat" : "Menüyü aç"}
         onClick={() => setOpen((v) => !v)}
-        className="flex items-center gap-2 rounded-[3px] border border-line px-3 py-2 text-sm transition-colors hover:border-accent"
+        className="flex h-11 min-w-11 items-center justify-center gap-2 rounded-[3px] border border-line px-3 text-sm transition-colors hover:border-accent"
       >
         {open ? "Kapat" : "Menü"}
       </button>
@@ -41,25 +41,27 @@ export function MobileMenu({
       >
         <nav className="flex flex-col p-2" aria-label="Mobil menü">
           {primaryLinks.map((link) => (
-            <Link
+            <NavLink
               key={link.href}
               href={link.href}
               onClick={() => setOpen(false)}
-              className="rounded-[3px] px-3 py-2.5 text-sm text-ink/80 transition-colors hover:bg-paper-raised hover:text-accent"
+              underline={false}
+              className="rounded-[3px] px-3 py-2.5 hover:bg-paper-raised"
             >
               {link.label}
-            </Link>
+            </NavLink>
           ))}
           {moreLinks.length > 0 ? <div className="my-1 border-t border-line" /> : null}
           {moreLinks.map((link) => (
-            <Link
+            <NavLink
               key={link.href}
               href={link.href}
               onClick={() => setOpen(false)}
-              className="rounded-[3px] px-3 py-2.5 text-sm text-ink/80 transition-colors hover:bg-paper-raised hover:text-accent"
+              underline={false}
+              className="rounded-[3px] px-3 py-2.5 hover:bg-paper-raised"
             >
               {link.label}
-            </Link>
+            </NavLink>
           ))}
         </nav>
         <div className="p-2 pt-0">
