@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { NavLink } from "@/components/layout/NavLink";
 import { cn } from "@/lib/cn";
@@ -20,10 +20,39 @@ export function MobileMenu({
   ctaLabel: string;
 }) {
   const [open, setOpen] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const toggleRef = useRef<HTMLButtonElement>(null);
+
+  // Standard disclosure-pattern behavior: Escape and outside clicks close
+  // the menu, and Escape returns focus to the toggle so keyboard users
+  // never lose their place.
+  useEffect(() => {
+    if (!open) return;
+
+    function handleKeyDown(e: KeyboardEvent) {
+      if (e.key === "Escape") {
+        setOpen(false);
+        toggleRef.current?.focus();
+      }
+    }
+    function handlePointerDown(e: PointerEvent) {
+      if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    }
+
+    document.addEventListener("keydown", handleKeyDown);
+    document.addEventListener("pointerdown", handlePointerDown);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener("pointerdown", handlePointerDown);
+    };
+  }, [open]);
 
   return (
-    <div className="relative lg:hidden">
+    <div ref={containerRef} className="relative lg:hidden">
       <button
+        ref={toggleRef}
         type="button"
         aria-expanded={open}
         aria-label={open ? "Menüyü kapat" : "Menüyü aç"}
